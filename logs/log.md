@@ -5,3 +5,11 @@
 - **Activities:** 
   - Added logs to GitHub.
   - Set up the project Plan.
+
+## Date: 04/11/2024
+- **Logged by:** Solomon Haskell
+- **Activities:** 
+  - Updated Gantt Chart
+  - Added roles to project plan
+  - Linked Gantt chart to SDS
+
