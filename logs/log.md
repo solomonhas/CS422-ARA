@@ -14,3 +14,12 @@
   - Linked Gantt chart to SDS
   - Added to the SDS as well as formatting.
 
+## Date: 04/11/2024
+- **Logged by:** Jerin Spencer
+- **Activities:** 
+  - Updated Gantt Chart
+  - Added roles to project plan
+  - Linked Gantt chart to SDS
+  - Added to the SDS as well as formatting.
+  
+
