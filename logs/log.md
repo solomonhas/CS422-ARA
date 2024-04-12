@@ -12,4 +12,5 @@
   - Updated Gantt Chart
   - Added roles to project plan
   - Linked Gantt chart to SDS
+  - Added to the SDS as well as formatting.
 
