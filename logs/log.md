@@ -27,3 +27,9 @@
   - Cleaned Schdudling
   - Added roles and expected dates to Gantt chart.
   - Added work breakdown milestones
+
+## Date: 04/15/2024 
+  **Logged by:** Miles Anderson
+  - **Activities:** 
+    - Created UI.py, planning on using TKinter to create the UI for the project
+    - Initial Creation of the file, very little actual code written
