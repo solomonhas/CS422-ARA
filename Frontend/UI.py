@@ -13,11 +13,6 @@ class MainApplication(tk.Frame):
   def __init__(self, parent, *args, **kwargs):
     tk.Frame.__init__(self, parent, *args, **kwargs)
 
-    notebook = ttk.Notebook(parent)
-
-    notebook.add(Typ1(notebook), text='TAB1')
-    notebook.add(Typ2(notebook), text='TAB2')
-    notebook.pack()
 
 class Typ1(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
