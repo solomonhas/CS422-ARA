@@ -33,3 +33,10 @@
   - **Activities:** 
     - Created UI.py, planning on using TKinter to create the UI for the project
     - Initial Creation of the file, very little actual code written
+
+## Date: 04/18/2024 
+**Logged by:** Areyan Rastawan
+- **Activities:** 
+  - Set up the MySQL database
+  - Connected the MySQL database to ix-dev server
+  - Researched SQL
