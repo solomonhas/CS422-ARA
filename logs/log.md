@@ -53,3 +53,4 @@
   - Set up the MySQL database.
   - Connected the MySQL database to ix-dev server.
   - Researched SQL.
+  - I added a table for usernames and user IDs with notes for testing.
