@@ -8,21 +8,27 @@
 
 ## Date: 04/11/2024 - Group Meeting
 - **Meeting Time:** 6:00 PM - 8:00 PM
-- **Logged by:** Solomon Haskell
+- **Notes:**
+  - Made the Gantt chart.
+  - Progress on project plan.
+  - Progress check on the SDS.
+  - Discussed milestones.
+
+**Logged by:** Solomon Haskell
 - **Activities:**
   - Updated Gantt Chart.
   - Added roles to project plan.
   - Linked Gantt chart to SDS.
   - Added to the SDS as well as formatting.
 
-- **Logged by:** Jerin Spencer
+**Logged by:** Jerin Spencer
 - **Activities:**
   - Updated Gantt Chart.
   - Added roles to project plan.
   - Linked Gantt chart to SDS.
   - Added to the SDS as well as formatting.
 
-- **Logged by:** Areyan Rastawan
+**Logged by:** Areyan Rastawan
 - **Activities:**
   - Finalized Project Plan.
   - Cleaned scheduling.
@@ -37,11 +43,12 @@
 
 ## Date: 04/18/2024 - Group Meeting
 - **Meeting Time:** 6:00 PM - 6:30 PM
-- **Logged by:** Areyan Rastawan
 - **Notes:**
   - Discussed personal task deadlines.
   - Updated Gantt chart.
   - Planned next meeting to review teams' material and tie them together.
+
+**Logged by:** Areyan Rastawan
 - **Activities:**
   - Set up the MySQL database.
   - Connected the MySQL database to ix-dev server.
