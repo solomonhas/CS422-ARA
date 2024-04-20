@@ -2,41 +2,47 @@
 
 ## Date: 04/10/2024
 - **Logged by:** Areyan Rastawan
-- **Activities:** 
+- **Activities:**
   - Added logs to GitHub.
-  - Set up the project Plan.
+  - Set up the project plan.
 
 ## Date: 04/11/2024 - Group Meeting
+- **Meeting Time:** 6:00 PM - 8:00 PM
 - **Logged by:** Solomon Haskell
-- **Activities:** 
-  - Updated Gantt Chart
-  - Added roles to project plan
-  - Linked Gantt chart to SDS
+- **Activities:**
+  - Updated Gantt Chart.
+  - Added roles to project plan.
+  - Linked Gantt chart to SDS.
   - Added to the SDS as well as formatting.
 
 - **Logged by:** Jerin Spencer
-- **Activities:** 
-  - Updated Gantt Chart
-  - Added roles to project plan
-  - Linked Gantt chart to SDS
+- **Activities:**
+  - Updated Gantt Chart.
+  - Added roles to project plan.
+  - Linked Gantt chart to SDS.
   - Added to the SDS as well as formatting.
-  
+
 - **Logged by:** Areyan Rastawan
-- **Activities:** 
-  - Finalized Project Plan
-  - Cleaned Schdudling
+- **Activities:**
+  - Finalized Project Plan.
+  - Cleaned scheduling.
   - Added roles and expected dates to Gantt chart.
-  - Added work breakdown milestones
+  - Added work breakdown milestones.
 
-## Date: 04/15/2024 
-  **Logged by:** Miles Anderson
-  - **Activities:** 
-    - Created UI.py, planning on using TKinter to create the UI for the project
-    - Initial Creation of the file, very little actual code written
+## Date: 04/15/2024
+- **Logged by:** Miles Anderson
+- **Activities:**
+  - Created UI.py, planning on using TKinter to create the UI for the project.
+  - Initial creation of the file, very little actual code written.
 
-## Date: 04/18/2024 
-**Logged by:** Areyan Rastawan
-- **Activities:** 
-  - Set up the MySQL database
-  - Connected the MySQL database to ix-dev server
-  - Researched SQL
+## Date: 04/18/2024 - Group Meeting
+- **Meeting Time:** 6:00 PM - 6:30 PM
+- **Logged by:** Areyan Rastawan
+- **Notes:**
+  - Discussed personal task deadlines.
+  - Updated Gantt chart.
+  - Planned next meeting to review teams' material and tie them together.
+- **Activities:**
+  - Set up the MySQL database.
+  - Connected the MySQL database to ix-dev server.
+  - Researched SQL.
