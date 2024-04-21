@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import *
 
-import tkPDFViewer as pdf 
-
+#from tkPDFViewer import tkPDFViewer as pdf
 
 
 class LoginScreen:
@@ -46,28 +45,27 @@ class HomeScreen(object):
 
         print(userid) #Print the current user to terminal
 
-        pdf_1_button = Button(self.root, text= "PDF 1", padx=100, pady = 100, bg="black")
+        pdf_1_button = Button(self.root, text= "PDF 1", padx=100, pady = 100, bg="black", command=lambda: self.open_pdf_viewer("N/A"))
         pdf_1_button.pack()
-
-
         self.root.mainloop()    
 
-    def open_pdf(self, pdf_location):
-        pass
+    def open_pdf_viewer(self, pdf_location):
+        PDF_Viewer("N/A")
+        self.root.destroy()
 
 
 class PDF_Viewer(object):
     def __init__(self, pdf_location):
         self.root = tk.Tk()
-        self.pdf_viewer = pdf.ShowPdf()
-        self.pdf_viewer.pack(side="top", fill="both", expand=True)
-        self.pdf_viewer.load_pdf(r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Backend\pdfs\dummy1")
+        self.root.minsize(1000,1000)
+        self.root.bg("black")
 
+        #self.pdf_viewer = pdf.ShowPdf()
+        #self.pdf_viewer.pack(side="top", fill="both", expand=True)
+        #self.pdf_viewer.load_pdf(r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Backend\pdfs\dummy1")
 
         self.root.mainloop()
         
-
-
 
 class User():
    def __init__(self, user_name, pass_word, user_number):
@@ -75,10 +73,6 @@ class User():
         self.name = user_name
         self.password = pass_word
         
-
-
-
-
 
 if __name__ == "__main__":
     LoginScreen()
