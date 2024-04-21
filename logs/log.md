@@ -55,6 +55,8 @@
   - Researched SQL.
   - I added a table for usernames and user IDs with notes for testing.
 
+
+## Date: 04/20/2024
 **Logged by:** Solomon Haskell
 - **Activities:**
   - Created pdf_test.py to try and send pdfs to table on server
