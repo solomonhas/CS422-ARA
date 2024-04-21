@@ -27,6 +27,7 @@ def store_pdf_in_database(pdf_folder, connection):
             #From what ive seen you have to iterate over all the pdf's located in the pdfs directory
             #this seems horrible so idk
             for filename in ["dummy1.pdf", "dummy2.pdf", "dummy3.pdf"]: #this i think works only for these 3? idk i have to check
+                #print("Opening file:", pdf_folder + "/" + filename)
                 with open(pdf_folder + "/" + filename, 'rb') as file:
                     pdf_data = file.read()
 
@@ -37,13 +38,16 @@ def store_pdf_in_database(pdf_folder, connection):
             print("PDFs inserted successfully!")
 
             cursor.close()
+            connection.close()
 
     except Error as e:
         print("Error while storing PDFs in the database:", e)
 
 if __name__ == "__main__":
     #This is the pdf folcer that will store the pdfs
-    pdf_folder = "pdfs"
+
+    #NEED TO CHANGE THIS
+    pdf_folder = r"C:\Users\SLUGS\CS422\CS422-ARA\CS422-ARA\Backend\pdfs" #had to do horrible blackslashes for this to work
 
     #for this from connections.py, not sure if i need it here
     db_config = {
@@ -59,6 +63,8 @@ if __name__ == "__main__":
 
         if connection.is_connected():
             print("Connected to MySQL Server")
+
+            create_pdf_table(connection) #create the table
 
             #This is where i call the function to store any pdfs into the table from mySQL
             store_pdf_in_database(pdf_folder, connection)
