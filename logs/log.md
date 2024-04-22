@@ -64,10 +64,7 @@
   - added pdfs directory to store pdfs before they are sent to the server. Going to change this for sure.
   - added requirements.txt to help speed up getting required modules
 
-## Date: 04/20/2024
-**Logged by:** Solomon Haskell
-- **Activities:**
-  - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
+
 ## Date: 4/21/2024
 **logged by:** Miles Anderson
   - **Activities:**
@@ -76,3 +73,8 @@
   - Login page, where you enter username and password is complete
   - PDF Selector page is a work in progress but have the ability to pass information between pages
   - Just need to get PDF Viewer Complete
+
+
+  **Logged by:** Solomon Haskell
+- **Activities:**
+  - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
