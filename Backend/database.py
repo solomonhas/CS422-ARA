@@ -112,10 +112,6 @@ def insert_chapter(chapter_name):
 
 def insert_chapter_note(chapter_id, note_file_path, pdf_id=None):
 
-insert_chapter("Chapter 1")
-chapter_id = 1
-insert_chapter_note(chapter_id, "path_to_note.txt", pdf_id=1)
-
 Insert a new chapter named Chapter 1 using insert_chapter.
 Retrieve the chapter_id corresponding to Chapter 1 from the Chapters table.
 If the chapter_id is found, use it to insert a new chapter note for Chapter 1 using insert_chapter_note.
