@@ -68,3 +68,11 @@
 **Logged by:** Solomon Haskell
 - **Activities:**
   - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
+## Date: 4/21/2024
+**logged by:** Miles Anderson
+  - **Activities:**
+  - Worked entirely in UI.py
+  - Created classes that act as different pages in program
+  - Login page, where you enter username and password is complete
+  - PDF Selector page is a work in progress but have the ability to pass information between pages
+  - Just need to get PDF Viewer Complete
