@@ -63,3 +63,8 @@
   - Added a Running tab to the readme to help users run code when they download
   - added pdfs directory to store pdfs before they are sent to the server. Going to change this for sure.
   - added requirements.txt to help speed up getting required modules
+
+## Date: 04/20/2024
+**Logged by:** Solomon Haskell
+- **Activities:**
+  - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
