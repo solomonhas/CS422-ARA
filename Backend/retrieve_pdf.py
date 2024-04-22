@@ -2,13 +2,19 @@ import mysql.connector
 from mysql.connector import Error
 import os
 
+##
+##This file receives PDFs from the database table in MySQL called PdfTable
+##It then places these pdfs with the same name they had when put in the table in a directory called Backend/received_pdfs
+##
+
 def retrieve_pdfs_from_database(connection, output_folder):
     try:
         if connection.is_connected():
             cursor = connection.cursor()
 
-            #Pick the pdf storing table
-            cursor.execute("SELECT PdfData FROM PdfTable")
+            #Pick the pdf storing table, i named it PdfTable
+            #Also get the filename from the table
+            cursor.execute("SELECT PdfData, Filename FROM PdfTable")
 
             #get the rows of the table
             pdf_rows = cursor.fetchall()
@@ -17,11 +23,10 @@ def retrieve_pdfs_from_database(connection, output_folder):
             os.makedirs(output_folder, exist_ok=True)
 
             #for all the rows in the table recieve the pdf
-            for index, pdf_data in enumerate(pdf_rows):
-                filename = f"received_pdf_{index + 1}.pdf"
-                output_path = os.path.join(output_folder, filename) #add the path of the directory to store the pdfs
+            for pdf_data, filename in pdf_rows:
+                output_path = os.path.join(output_folder, filename)
                 with open(output_path, 'wb') as file:
-                    file.write(pdf_data[0])
+                    file.write(pdf_data)
 
             print("PDFs retrieved and saved to", output_folder) #console output to show where the pdfs are recieved
 
