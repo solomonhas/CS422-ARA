@@ -4,7 +4,7 @@ import os
 import shutil
 
 
-#from tkPDFViewer import tkPDFViewer as pdf
+from tkPDFViewer import tkPDFViewer as pdf
 
 test_file ="/Users/milesoop/Documents/GitHub/CS422-ARA/Backend/pdfs/dummy1.pdf"
 
@@ -54,7 +54,7 @@ class HomeScreen(object):
         pdf_1_button = Button(self.root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer("PDF1"))
         pdf_1_button.pack(pady=10)
 
-        pdf_2_button = Button(self.root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer("PDF2"))
+        pdf_2_button = Button(self.root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file))
         pdf_2_button.pack()
 
         back_button = Button(self.root, text="Back", command=lambda: self.back_to_login())
@@ -79,9 +79,9 @@ class PDF_Viewer(object):
         print(pdf_location_var)
         #self.root.bg("black")
 
-        #v1 = pdf.ShowPdf() 
-        #v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 400, height = 400) 
-        #v2.pack()
+        v1 = pdf.ShowPdf() 
+        v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 400, height = 400) 
+        v2.pack()
 
         self.root.mainloop()
       
