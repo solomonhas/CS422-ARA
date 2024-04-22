@@ -63,3 +63,12 @@
   - Added a Running tab to the readme to help users run code when they download
   - added pdfs directory to store pdfs before they are sent to the server. Going to change this for sure.
   - added requirements.txt to help speed up getting required modules
+
+## Date: 4/21/2024
+**logged by:** Miles Anderson
+  - **Activities:**
+  - Worked entirely in UI.py
+  - Created classes that act as different pages in program
+  - Login page, where you enter username and password is complete
+  - PDF Selector page is a work in progress but have the ability to pass information between pages
+  - Just need to get PDF Viewer Complete
