@@ -7,13 +7,14 @@ from tkinter import *
 class LoginScreen:
     def __init__(self) -> None:
         self.root = tk.Tk()
+        self.root.configure(highlightbackground="red")
         self.root.minsize(400,200)
         self.root.title("Group 6 ARA")
 
-        self.username_textbox = tk.Entry(self.root)
+        self.username_textbox = tk.Entry(self.root,highlightbackground="red")
         self.username_textbox.pack(padx=10,pady=20)
 
-        self.password_textbox = tk.Entry(self.root)
+        self.password_textbox = tk.Entry(self.root,bg="black")
         self.password_textbox.pack(padx=10,pady=10)
 
         self.enter_button = Button(self.root, text="Enter", command=self.retrieve_input)
@@ -58,7 +59,7 @@ class PDF_Viewer(object):
     def __init__(self, pdf_location):
         self.root = tk.Tk()
         self.root.minsize(1000,1000)
-        self.root.bg("black")
+        #self.root.bg("black")
 
         #self.pdf_viewer = pdf.ShowPdf()
         #self.pdf_viewer.pack(side="top", fill="both", expand=True)
