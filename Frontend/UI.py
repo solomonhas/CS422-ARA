@@ -7,7 +7,6 @@ import shutil
 
 test_file ="/Users/milesoop/Documents/GitHub/CS422-ARA/Backend/pdfs/dummy1.pdf"
 
-
 class LoginScreen:
     def __init__(self) -> None:
         self.root = tk.Tk()
@@ -42,6 +41,7 @@ class LoginScreen:
             print("Incorrect Password")
             return username and password
 
+
 class HomeScreen(object):
     def __init__(self, userid):
         self.root = tk.Tk()
@@ -65,7 +65,6 @@ class HomeScreen(object):
         self.root.destroy()
         LoginScreen()
 
-
     def open_pdf_viewer(self, pdf_location):
         PDF_Viewer(pdf_location)
 
@@ -84,7 +83,7 @@ class PDF_Viewer(object):
         #v2.pack()
 
         self.root.mainloop()
-        
+      
 
 class User():
    def __init__(self, user_name, pass_word, user_number):
@@ -100,8 +99,6 @@ if __name__ == "__main__":
 
 
     
-
-
 
 
 
