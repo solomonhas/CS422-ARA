@@ -74,7 +74,6 @@
   - PDF Selector page is a work in progress but have the ability to pass information between pages
   - Just need to get PDF Viewer Complete
 
-
   **Logged by:** Solomon Haskell
 - **Activities:**
   - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
