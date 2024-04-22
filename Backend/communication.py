@@ -8,4 +8,16 @@ db_config = {
     'password': 'group6',
     'database': 'ara_db'
 }
-#server for the database
+"""
+User Table holds 
+Username 
+User ID # it is auto incramented everytime a new user is created
+
+
+Notes Table holds 
+User ID // has a refrence to the other table 
+Note ID
+Note text // holds the txt
+
+"""
+
