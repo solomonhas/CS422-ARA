@@ -17,7 +17,7 @@ User ID # it is auto incramented everytime a new user is created
 Notes Table holds 
 User ID // has a refrence to the other table 
 Note ID
-Note text
+Note text // holds the txt
 
 """
 
