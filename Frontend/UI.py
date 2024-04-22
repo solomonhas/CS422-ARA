@@ -1,7 +1,11 @@
 import tkinter as tk
 from tkinter import *
+import os
+import shutil
 
-#from tkPDFViewer import tkPDFViewer as pdf
+from tkPDFViewer import tkPDFViewer as pdf
+
+test_file ="/Users/milesoop/Documents/GitHub/CS422-ARA/Backend/pdfs/dummy1.pdf"
 
 
 class LoginScreen:
@@ -11,10 +15,10 @@ class LoginScreen:
         self.root.minsize(400,200)
         self.root.title("Group 6 ARA")
 
-        self.username_textbox = tk.Entry(self.root,highlightbackground="red")
+        self.username_textbox = tk.Entry(self.root,text="Username:",highlightbackground="red")
         self.username_textbox.pack(padx=10,pady=20)
 
-        self.password_textbox = tk.Entry(self.root,bg="black")
+        self.password_textbox = tk.Entry(self.root,text="Password:",bg="black")
         self.password_textbox.pack(padx=10,pady=10)
 
         self.enter_button = Button(self.root, text="Enter", command=self.retrieve_input)
@@ -46,24 +50,30 @@ class HomeScreen(object):
 
         print(userid) #Print the current user to terminal
 
-        pdf_1_button = Button(self.root, text= "PDF 1", padx=100, pady = 100, bg="black", command=lambda: self.open_pdf_viewer("N/A"))
+        pdf_1_button = Button(self.root, text= "PDF 1", padx=100, pady = 100, bg="black", command=lambda: self.open_pdf_viewer("PDF AT LOCATION 1"))
         pdf_1_button.pack()
+
+        pdf_2_button = Button(self.root, text= "PDF 2", padx=100, pady = 100, bg="black", command=lambda: self.open_pdf_viewer("PDF AT LOCATION 2"))
+        pdf_2_button.pack()
         self.root.mainloop()    
 
     def open_pdf_viewer(self, pdf_location):
-        PDF_Viewer("N/A")
+        PDF_Viewer(pdf_location)
         self.root.destroy()
 
 
 class PDF_Viewer(object):
-    def __init__(self, pdf_location):
+    def __init__(self, pdf_location_var):
         self.root = tk.Tk()
-        self.root.minsize(1000,1000)
+        self.root.minsize(400,400)
+        self.root.maxsize(600,600)
+        print(pdf_location_var)
         #self.root.bg("black")
 
-        #self.pdf_viewer = pdf.ShowPdf()
-        #self.pdf_viewer.pack(side="top", fill="both", expand=True)
-        #self.pdf_viewer.load_pdf(r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Backend\pdfs\dummy1")
+        #v1 = pdf.ShowPdf() 
+        #v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 400, height = 400) 
+        #v2.pack()
+
 
         self.root.mainloop()
         
