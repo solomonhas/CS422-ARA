@@ -1,18 +1,31 @@
 import mysql.connector
 from mysql.connector import Error
 
+import os
 
+##
+##This file is soley to send pdfs from Backend/pdfs to a table in MySQL called PdfTable
+##This can be used by placing pdfs you want in the table in the Backend/pdfs
+##
 def create_pdf_table(connection):
     try:
         if connection.is_connected():
             cursor = connection.cursor()
 
+            cursor.execute("SHOW TABLES LIKE 'PdfTable'")
+            table_exists = cursor.fetchone()
+
             #create the table with longblob whichh is large binary object
-            cursor.execute("CREATE TABLE IF NOT EXISTS PdfTable (PdfID INT AUTO_INCREMENT PRIMARY KEY, PdfData LONGBLOB)")
+
+            if table_exists:
+                print("PdfTable already exists.")
+            else:
+                #If the table does not exist
+                cursor.execute("CREATE TABLE PdfTable (PdfID INT AUTO_INCREMENT PRIMARY KEY, PdfData LONGBLOB, Filename VARCHAR(255))")
+                print("PdfTable created successfully!")
+
 
             connection.commit()
-            print("PdfTable created successfully!")
-
             cursor.close()
 
     except Error as e:
@@ -24,18 +37,22 @@ def store_pdf_in_database(pdf_folder, connection):
         if connection.is_connected():
             cursor = connection.cursor()
 
-            #From what ive seen you have to iterate over all the pdf's located in the pdfs directory
-            #this seems horrible so idk
-            for filename in ["dummy1.pdf", "dummy2.pdf", "dummy3.pdf"]: #this i think works only for these 3? idk i have to check
-                #print("Opening file:", pdf_folder + "/" + filename)
-                with open(pdf_folder + "/" + filename, 'rb') as file:
-                    pdf_data = file.read()
+            for filename in os.listdir(pdf_folder):
+                if filename.endswith(".pdf"):
+                    with open(os.path.join(pdf_folder, filename), 'rb') as file:
+                        pdf_data = file.read()
 
-                #This is to insert the binary data into the pdfdata table made earlier
-                cursor.execute("INSERT INTO PdfTable (PdfData) VALUES (%s)", (pdf_data,))
+                    cursor.execute("SELECT COUNT(*) FROM PdfTable WHERE Filename = %s", (filename,))
+                    count = cursor.fetchone()[0]
+
+                    if count == 0:  # PDF with same filename not found in the database, insert it
+                        cursor.execute("INSERT INTO PdfTable (PdfData, Filename) VALUES (%s, %s)", (pdf_data, filename))
+                        print(f"Inserted {filename} into the database.")
+                    else:
+                        print(f"{filename} already in the table, not adding.")
 
             connection.commit()
-            print("PDFs inserted successfully!")
+            print("Insert to database successful")
 
             cursor.close()
             connection.close()
@@ -43,11 +60,13 @@ def store_pdf_in_database(pdf_folder, connection):
     except Error as e:
         print("Error while storing PDFs in the database:", e)
 
+
+
 if __name__ == "__main__":
     #This is the pdf folcer that will store the pdfs
 
     #NEED TO CHANGE THIS
-    pdf_folder = r"C:\Users\SLUGS\CS422\CS422-ARA\CS422-ARA\Backend\pdfs" #had to do horrible blackslashes for this to work
+    pdf_folder = "Backend\pdfs" #had to do horrible blackslashes for this to work
 
     #for this from connections.py, not sure if i need it here
     db_config = {
@@ -64,7 +83,8 @@ if __name__ == "__main__":
         if connection.is_connected():
             print("Connected to MySQL Server")
 
-            create_pdf_table(connection) #create the table
+            create_pdf_table(connection)  #create the table
+
 
             #This is where i call the function to store any pdfs into the table from mySQL
             store_pdf_in_database(pdf_folder, connection)
