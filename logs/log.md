@@ -54,3 +54,12 @@
   - Connected the MySQL database to ix-dev server.
   - Researched SQL.
   - I added a table for usernames and user IDs with notes for testing.
+
+
+## Date: 04/20/2024
+**Logged by:** Solomon Haskell
+- **Activities:**
+  - Created pdf_test.py to try and send pdfs to table on server
+  - Added a Running tab to the readme to help users run code when they download
+  - added pdfs directory to store pdfs before they are sent to the server. Going to change this for sure.
+  - added requirements.txt to help speed up getting required modules
