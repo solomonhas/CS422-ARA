@@ -1,12 +1,14 @@
 import tkinter as tk
 from tkinter import *
+import math
 import os
 import shutil
 
 
-from tkPDFViewer import tkPDFViewer as pdf
+from tkPDFViewer import tkPDFViewer as pdf 
 
-test_file ="/Users/milesoop/Documents/GitHub/CS422-ARA/Backend/pdfs/dummy1.pdf"
+test_file = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
+
 
 class LoginScreen:
     def __init__(self) -> None:
@@ -51,7 +53,7 @@ class HomeScreen(object):
 
         print(userid) #Print the current user to terminal
 
-        pdf_1_button = Button(self.root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer("PDF1"))
+        pdf_1_button = Button(self.root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file))
         pdf_1_button.pack(pady=10)
 
         pdf_2_button = Button(self.root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file))
@@ -77,7 +79,6 @@ class PDF_Viewer(object):
         self.root.maxsize(600,600)
         self.root.title(pdf_location_var)
         print(pdf_location_var)
-        #self.root.bg("black")
 
         v1 = pdf.ShowPdf() 
         v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 400, height = 400) 
