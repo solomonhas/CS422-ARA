@@ -5,7 +5,7 @@ import os
 import shutil
 
 
-from tkPDFViewer import tkPDFViewer as pdf 
+#from tkPDFViewer import tkPDFViewer as pdf
 
 test_file = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
 
