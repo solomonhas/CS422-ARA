@@ -37,9 +37,8 @@ def to_chapter_select():
     clearFile()
     page2.tkraise()
 
-
-style1 = font.Font(size = 25)
-style2 = font.Font(size = 20)
+style1 = font.Font(size=25)
+style2 = font.Font(size=20)
 page1 = Frame(win)
 page2 = Frame(win)
 notepad = Frame(win)
@@ -48,16 +47,15 @@ page1.grid(row = 0, column= 0, sticky = "nsew")
 page2.grid(row = 0, column= 0, sticky = "nsew")
 notepad.grid(row = 0, column= 0, sticky = "nsew")
 
-lb1 = Label(page1, text = "page 1", font = style1)
+lb1 = Label(page1, text="page 1", font=style1)
 lb1.pack(pady=20)
 
-lb2 = Label(page2, text = "page 2", font = style1)
+lb2 = Label(page2, text="page 2", font=style1)
 lb2.pack(pady=20)
 
-btn1 = Button(page1, text = "page2", command =lambda: page2.tkraise(), font = style2)
+btn1 = Button(page1, text="page2", command=lambda: page2.tkraise(), font=style2)
 btn1.pack()
 
-#set up chapter select frame--------------
 directory = os.getcwd()
 files = os.listdir(directory)
 buttons= []
@@ -69,7 +67,11 @@ for i in range(len(files)):
                               bg = "white", height = 5, width = 50, font = ("times", 10), pady = 10))
     buttons[i].pack(padx = 100)
 
-btn2 = Button(page2, text = "page1", command =lambda: page1.tkraise(), font = style2)
+        buttons.append(tk.Button(page2, text=file, command=lambda i=i: sections[i].tkraise(),
+                                 bg="white", height=5, width=50, font=("times", 10), pady=10))
+        buttons[i].pack(padx=100)
+
+btn2 = Button(page2, text="page1", command=lambda: page1.tkraise(), font=style2)
 btn2.pack()
 
 btn3 = Button(page2, text = "to notes", command =lambda: notepad.tkraise(), font = style2)
@@ -101,8 +103,5 @@ page1.tkraise()
 
 win.geometry("650x650")
 win.title("Multiple Pages application")
-
-win.resizable(False,False)
+win.resizable(False, False)
 win.mainloop()
-
-
