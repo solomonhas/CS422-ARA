@@ -5,9 +5,16 @@ import os
 import shutil
 
 
-#from tkPDFViewer import tkPDFViewer as pdf
+
+from tkPDFViewer import tkPDFViewer as pdf
+
+from tkdocviewer import *
 
 test_file = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
+#os.system(test_file)
+
+
+
 
 
 class LoginScreen:
@@ -80,9 +87,10 @@ class PDF_Viewer(object):
         self.root.title(pdf_location_var)
         print(pdf_location_var)
 
-        v1 = pdf.ShowPdf() 
-        v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 400, height = 400) 
-        v2.pack()
+        v1 = DocViewer(self.root) 
+        v1.pack()
+
+        v1.display_file(test_file)
 
         self.root.mainloop()
       
@@ -95,7 +103,8 @@ class User():
         
 
 if __name__ == "__main__":
-    LoginScreen()
+    #LoginScreen() Tabbed out currently to skip log in for practicality of testing
+    HomeScreen("Blank_User")
 
 
 
