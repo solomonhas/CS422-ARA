@@ -37,6 +37,10 @@ def to_chapter_select():
     clearFile()
     page2.tkraise()
 
+def new_section():
+    entry.insert(tk.INSERT, "--------[SECTION NAME]--------\n")
+
+
 style1 = font.Font(size=25)
 style2 = font.Font(size=20)
 page1 = Frame(win)
@@ -67,10 +71,6 @@ for i in range(len(files)):
                               bg = "white", height = 5, width = 50, font = ("times", 10), pady = 10))
     buttons[i].pack(padx = 100)
 
-        buttons.append(tk.Button(page2, text=file, command=lambda i=i: sections[i].tkraise(),
-                                 bg="white", height=5, width=50, font=("times", 10), pady=10))
-        buttons[i].pack(padx=100)
-
 btn2 = Button(page2, text="page1", command=lambda: page1.tkraise(), font=style2)
 btn2.pack()
 
@@ -83,7 +83,7 @@ btn3.pack()
 top = tk.Frame(notepad)  #frame holds the buttons, makes it easier to format
 
 top.pack(padx = 10, pady = 5, anchor = "nw")
-b1 = tk.Button(notepad, text="Open", bg = "white", command = openFile) #command links the button to a function
+b1 = tk.Button(notepad, text="New Section", bg = "white", command = new_section) #command links the button to a function
 b1.pack(in_ = top, side = tk.LEFT)
 
 b2 = tk.Button(notepad, text="Save", bg = "white", command = saveFile)
