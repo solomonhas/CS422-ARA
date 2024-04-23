@@ -1,20 +1,10 @@
 import tkinter as tk
 from tkinter import *
-import math
 import os
-import shutil
-
-
-
 from tkPDFViewer import tkPDFViewer as pdf
 
-from tkdocviewer import *
-
-test_file = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
-#os.system(test_file)
-
-
-
+test_file_1 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
+test_file_2 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\Resume 2_1_2024.pdf"
 
 
 class LoginScreen:
@@ -54,16 +44,17 @@ class LoginScreen:
 
 class HomeScreen(object):
     def __init__(self, userid):
+
         self.root = tk.Tk()
         self.root.minsize(600,400)
         self.root.title("Group 6 ARA")
 
         print(userid) #Print the current user to terminal
 
-        pdf_1_button = Button(self.root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file))
+        pdf_1_button = Button(self.root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file_1))
         pdf_1_button.pack(pady=10)
 
-        pdf_2_button = Button(self.root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file))
+        pdf_2_button = Button(self.root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file_2))
         pdf_2_button.pack()
 
         back_button = Button(self.root, text="Back", command=lambda: self.back_to_login())
@@ -75,24 +66,46 @@ class HomeScreen(object):
         self.root.destroy()
         LoginScreen()
 
-    def open_pdf_viewer(self, pdf_location):
-        PDF_Viewer(pdf_location)
+    def back_to_home(self):
+        self.viewer.destroy()
+        HomeScreen("Blank_User")
+
+    def open_pdf_viewer(self, pdf_location_var):
+        self.root.destroy()
+
+        self.viewer = tk.Tk()
+        self.viewer.title(pdf_location_var)
+
+        back_button = Button(self.viewer, text="Back",height=1,width=1,padx=100, command=lambda: self.back_to_home())
+        back_button.pack()
+
+        v1 = pdf.ShowPdf() 
+        v2 = v1.pdf_view(self.viewer, pdf_location=pdf_location_var, width = 77, height = 77) 
+        v2.pack(pady=10,padx=10)
+
+        self.viewer.mainloop()
+
 
 
 class PDF_Viewer(object):
     def __init__(self, pdf_location_var):
+
         self.root = tk.Tk()
         self.root.minsize(400,400)
         self.root.maxsize(600,600)
         self.root.title(pdf_location_var)
-        print(pdf_location_var)
 
-        v1 = DocViewer(self.root) 
-        v1.pack()
 
-        v1.display_file(test_file)
+
+        v1 = pdf.ShowPdf() 
+        v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 77, height = 100) 
+        v2.pack(pady=(0,0))
 
         self.root.mainloop()
+
+
+
+
       
 
 class User():
@@ -104,6 +117,8 @@ class User():
 
 if __name__ == "__main__":
     #LoginScreen() Tabbed out currently to skip log in for practicality of testing
+
+
     HomeScreen("Blank_User")
 
 
