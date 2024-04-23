@@ -1,0 +1,96 @@
+Index: note taker/Ui and Chapter select/Chapter_Select.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import tkinter as tk\r\nfrom tkinter import *\r\nfrom tkinter import font\r\nimport os\r\n\r\nwin = tk.Tk()\r\n\r\ndef fill_chapter_frame(sections_frame, chapter_path, prev_frame):\r\n    \"\"\"\r\n    Makes a frame for a chapter folder, gives each section txt a button.\r\n    \"\"\"\r\n    files = os.listdir(chapter_path)\r\n    print(chapter_path) # test print\r\n    sec_buts = []\r\n    for i in range(len(files)):\r\n        print(\"\\t\"+ files[i])   #test print\r\n        sec_buts.append(tk.Button(sections_frame, text=files[i], bg = \"white\", height = 5, width = 50, font = (\"times\", 10), pady = 10))\r\n        sec_buts[i].pack(padx = 0)\r\n    sec_buts.append(Button(sections_frame, text = \"page2\", command =lambda: page2.tkraise(), font = style2))\r\n    sec_buts[i+1].pack()\r\n    print(sections_frame)\r\n\r\n\r\n\r\nstyle1 = font.Font(size = 25)\r\nstyle2 = font.Font(size = 20)\r\npage1 = Frame(win)\r\npage2 = Frame(win)\r\n\r\npage1.grid(row = 0, column= 0, sticky = \"nsew\")\r\npage2.grid(row = 0, column= 0, sticky = \"nsew\")\r\n\r\nlb1 = Label(page1, text = \"page 1\", font = style1)\r\nlb1.pack(pady=20)\r\n\r\nlb2 = Label(page2, text = \"page 2\", font = style1)\r\nlb2.pack(pady=20)\r\n\r\nbtn1 = Button(page1, text = \"page2\", command =lambda: page2.tkraise(), font = style2)\r\nbtn1.pack()\r\n\r\n#set up chapter select frame--------------\r\ndirectory = os.getcwd()\r\nfiles = os.listdir(directory)\r\nsections = [] #frames for each chapter to hold display the sections\r\nbuttons= []\r\nfor i in range(len(files)):\r\n    sections.append(Frame(win))\r\n    sections[i].grid(row = 0, column= 0, sticky = \"nsew\")\r\n    chapter_path = directory +\"\\\\\" + files[i] #construct path to chapter folder\r\n    fill_chapter_frame(sections[i], chapter_path, page2)\r\n\r\n    #TODO Problem: the buttons will all link to the same chapter folder\r\n    buttons.append(tk.Button(page2, text=files[i], command =lambda: sections[i].tkraise(),\r\n                              bg = \"white\", height = 5, width = 50, font = (\"times\", 10), pady = 10))\r\n    buttons[i].pack(padx = 100)\r\n\r\nbtn2 = Button(page2, text = \"page1\", command =lambda: page1.tkraise(), font = style2)\r\nbtn2.pack()\r\n#-----------------------------------\r\n\r\npage1.tkraise()\r\n\r\nwin.geometry(\"650x650\")\r\nwin.title(\"Multiple Pages application\")\r\n\r\nwin.resizable(False,False)\r\nwin.mainloop()\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/note taker/Ui and Chapter select/Chapter_Select.py b/note taker/Ui and Chapter select/Chapter_Select.py
+--- a/note taker/Ui and Chapter select/Chapter_Select.py	(revision fdc8311c534a1288b1770be7844c308a3f1c3066)
++++ b/note taker/Ui and Chapter select/Chapter_Select.py	(date 1713765908366)
+@@ -14,57 +14,52 @@
+     sec_buts = []
+     for i in range(len(files)):
+         print("\t"+ files[i])   #test print
+-        sec_buts.append(tk.Button(sections_frame, text=files[i], bg = "white", height = 5, width = 50, font = ("times", 10), pady = 10))
+-        sec_buts[i].pack(padx = 0)
+-    sec_buts.append(Button(sections_frame, text = "page2", command =lambda: page2.tkraise(), font = style2))
+-    sec_buts[i+1].pack()
++        sec_buts.append(tk.Button(sections_frame, text=files[i], bg="white", height=5, width=50, font=("times", 10), pady=10))
++        sec_buts[i].pack(padx=0)
++    sec_buts.append(Button(sections_frame, text="page2", command=lambda: page2.tkraise(), font=style2))
++    sec_buts[i + 1].pack()
+     print(sections_frame)
+ 
+-
+-
+-style1 = font.Font(size = 25)
+-style2 = font.Font(size = 20)
++style1 = font.Font(size=25)
++style2 = font.Font(size=20)
+ page1 = Frame(win)
+ page2 = Frame(win)
+ 
+-page1.grid(row = 0, column= 0, sticky = "nsew")
+-page2.grid(row = 0, column= 0, sticky = "nsew")
++page1.grid(row=0, column=0, sticky="nsew")
++page2.grid(row=0, column=0, sticky="nsew")
+ 
+-lb1 = Label(page1, text = "page 1", font = style1)
++lb1 = Label(page1, text="page 1", font=style1)
+ lb1.pack(pady=20)
+ 
+-lb2 = Label(page2, text = "page 2", font = style1)
++lb2 = Label(page2, text="page 2", font=style1)
+ lb2.pack(pady=20)
+ 
+-btn1 = Button(page1, text = "page2", command =lambda: page2.tkraise(), font = style2)
++btn1 = Button(page1, text="page2", command=lambda: page2.tkraise(), font=style2)
+ btn1.pack()
+ 
+-#set up chapter select frame--------------
++# Assuming directory contains the directory paths you want to iterate over
+ directory = os.getcwd()
+-files = os.listdir(directory)
+-sections = [] #frames for each chapter to hold display the sections
+-buttons= []
+-for i in range(len(files)):
++directories = [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
++
++sections = []  # frames for each chapter to hold display the sections
++buttons = []
++
++for i in range(len(directories)):
+     sections.append(Frame(win))
+-    sections[i].grid(row = 0, column= 0, sticky = "nsew")
+-    chapter_path = directory +"\\" + files[i] #construct path to chapter folder
++    sections[i].grid(row=0, column=0, sticky="nsew")
++    chapter_path = os.path.join(directory, directories[i])  # Construct path to chapter folder
+     fill_chapter_frame(sections[i], chapter_path, page2)
+ 
+-    #TODO Problem: the buttons will all link to the same chapter folder
+-    buttons.append(tk.Button(page2, text=files[i], command =lambda: sections[i].tkraise(),
+-                              bg = "white", height = 5, width = 50, font = ("times", 10), pady = 10))
+-    buttons[i].pack(padx = 100)
++    buttons.append(tk.Button(page2, text=directories[i], command=lambda i=i: sections[i].tkraise(),
++                              bg="white", height=5, width=50, font=("times", 10), pady=10))
++    buttons[i].pack(padx=100)
+ 
+-btn2 = Button(page2, text = "page1", command =lambda: page1.tkraise(), font = style2)
++btn2 = Button(page2, text="page1", command=lambda: page1.tkraise(), font=style2)
+ btn2.pack()
+-#-----------------------------------
+ 
+ page1.tkraise()
+ 
+ win.geometry("650x650")
+ win.title("Multiple Pages application")
+-
+-win.resizable(False,False)
++win.resizable(False, False)
+ win.mainloop()
+-
+-
+diff --git a/Backend/chapter_note_storage.py b/Backend/database.py
+rename from Backend/chapter_note_storage.py
+rename to Backend/database.py
