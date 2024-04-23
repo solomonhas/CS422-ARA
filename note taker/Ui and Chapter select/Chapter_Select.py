@@ -5,8 +5,8 @@ from tkinter.scrolledtext import ScrolledText
 import os
 #done: change save file so it automatically saves in the a given file path
 #done: add auto saving to the return command
-#TODO: add some sort of bolding options or something for section differentiation
-#TODO: add scroll bar to notepad 
+#done: add some sort of bolding options or something for section differentiation
+#done: add scroll bar to notepad 
 
 
 win = tk.Tk()
@@ -83,7 +83,7 @@ btn3.pack()
 top = tk.Frame(notepad)  #frame holds the buttons, makes it easier to format
 
 top.pack(padx = 10, pady = 5, anchor = "nw")
-b1 = tk.Button(notepad, text="New Section", bg = "white", command = new_section) #command links the button to a function
+b1 = tk.Button(notepad, text="New Section", bg = "white", command = new_section) 
 b1.pack(in_ = top, side = tk.LEFT)
 
 b2 = tk.Button(notepad, text="Save", bg = "white", command = saveFile)
@@ -102,6 +102,6 @@ entry.pack(padx = 10, pady = 5)
 page1.tkraise()
 
 win.geometry("650x650")
-win.title("Multiple Pages application")
+win.title("Notes")
 win.resizable(False, False)
 win.mainloop()
