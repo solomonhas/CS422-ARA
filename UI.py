@@ -1,58 +1,42 @@
 import tkinter as tk
-from tkinter import *
-import os
-from tkPDFViewer import tkPDFViewer as pdf
+from tkinter import Button, Entry, Toplevel
 import database
-
-
-test_file_1 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\final notesheet 2.pdf"
-test_file_2 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Resume 2_1_2024.pdf"
-
-test_file_array = [test_file_1,test_file_2]
-
+from tkPDFViewer import tkPDFViewer as pdf
 
 class LoginScreen:
-    def __init__(self) -> None:
-        self.root = tk.Tk()
+    def __init__(self, root):
+        self.root = root
         self.root.configure(highlightbackground="red")
-        self.root.minsize(400,200)
+        self.root.minsize(400, 200)
         self.root.title("Group 6 ARA")
 
-        self.username_textbox = tk.Entry(self.root,text="Username:")
-        self.username_textbox.pack(padx=10,pady=20)
+        self.username_textbox = Entry(self.root, text="Username:")
+        self.username_textbox.pack(padx=10, pady=20)
 
-        self.password_textbox = tk.Entry(self.root,text="Password:")
-        self.password_textbox.pack(padx=10,pady=10)
+        self.password_textbox = Entry(self.root, text="Password:")
+        self.password_textbox.pack(padx=10, pady=10)
 
         self.enter_button = Button(self.root, text="Enter", command=self.retrieve_input)
         self.enter_button.pack()
 
-        self.root.mainloop()
-
     def nextWindow(self):
-        self.root.destroy()
-        HomeScreen("Blank_User")
+        self.root.withdraw()
+        HomeScreen("Blank_User", self.root)
 
     def retrieve_input(self):
-        username = tk.StringVar
-        password = tk.StringVar
         username = self.username_textbox.get()
         password = self.password_textbox.get()
-        if (username == "Admin" and password == "Admin") or (username == "1"):
+        if (username == " " and password == " ") or (username == "1"):
             self.nextWindow()
-            return username and password
         else:
             print("Incorrect Password")
-            return username and password
 
-
-class HomeScreen(object):
-    def __init__(self, userid):
-        self.root = tk.Tk()
+class HomeScreen:
+    def __init__(self, userid, root):
+        self.root = Toplevel(root)
         self.root.minsize(600, 400)
         self.root.title("Group 6 ARA")
 
-        # Initialize DatabaseManager
         self.db_manager = database.DatabaseManager(
             host='ix-dev.cs.uoregon.edu',
             port=3056,
@@ -60,116 +44,45 @@ class HomeScreen(object):
             password='group6',
             database='ara_db'
         )
+        # build PDF table and retrieve PDF locations
+        self.db_manager.build_pdf_table()
 
-        # Fetch PDF locations from the database
         pdf_locations = self.db_manager.get_pdf_locations()
 
-        # Create buttons for each PDF
-        #for i, pdf_location in enumerate(pdf_locations):
-            #pdf_button = Button(self.root, text=f"PDF {i+1}", height=1, width=1, padx=30, pady=30,
-                                #command=lambda loc=pdf_location: self.open_pdf_viewer(test_file_1))
-            #pdf_button.pack(pady=10)
-        pdf_button1 = Button(self.root, text=f"PDF 1", height=1, width=1, padx=30, pady=30,
-                            command=lambda:  self.open_pdf_viewer(test_file_1))
-        pdf_button1.pack(pady=10)
-
-        pdf_button2 = Button(self.root, text=f"PDF 2", height=1, width=1, padx=30, pady=30,
-                            command=lambda:  self.open_pdf_viewer(test_file_2))
-        pdf_button2.pack(pady=10)
-
-
-        back_button = Button(self.root, text="Back", command=lambda: self.back_to_login())
+        # create buttons for each PDF location
+        for i, pdf_location in enumerate(pdf_locations):
+            pdf_button = Button(self.root, text=f"PDF {i + 1}", height=1, width=1, padx=30, pady=30,
+                                command=lambda loc=pdf_location: self.open_pdf_viewer(loc))
+            pdf_button.pack(pady=10)
+        # create back button
+        back_button = Button(self.root, text="Back", command=self.back_to_login)
         back_button.pack(pady=30)
+        # configure close window event
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
-        self.root.mainloop()
-
+    # destroy the home screen and show the login window
     def back_to_login(self):
         self.root.destroy()
-        LoginScreen()
+        self.root.master.deiconify()
 
-    def back_to_home(self):
-        #self.viewer.destroy()
-        HomeScreen("Blank_User")
-
+        # open PDF viewer for the selected PDF location
     def open_pdf_viewer(self, pdf_location_var):
-        #self.root.destroy()
-        frame1 = Frame(self.root, width=100,height=100)
-        frame1.place(x=0,y=0)
+        viewer = Toplevel(self.root)
+        viewer.title(pdf_location_var)
 
-        #self.viewer = tk.Tk()
-        #self.viewer.title(pdf_location_var)
-        v1 = pdf.ShowPdf()
-        v2 = v1.pdf_view(frame1, pdf_location=pdf_location_var, width=77, height=77)
-        v2.pack(pady=10, padx=10)
-
-        back_button = Button(frame1, text="Back", height=1, width=1, padx=100, command=lambda: self.frame1.place_forget())
+        back_button = Button(viewer, text="Back", height=1, width=1, padx=100, command=viewer.destroy)
         back_button.pack()
 
-        #self.viewer.mainloop()
-
-    #def back_to_login(self):
-        #self.root.destroy()
-        #LoginScreen()
-
-    #def back_to_home(self):
-        #self.viewer.destroy()
-        #HomeScreen("Blank_User")
-
-    #def open_pdf_viewer(self, pdf_location_var):
-        #self.root.destroy()
-
-        #self.viewer = tk.Tk()
-        #self.viewer.title(pdf_location_var)
-
-        #back_button = Button(self.viewer, text="Back",height=1,width=1,padx=100, command=lambda: self.back_to_home())
-        #back_button.pack()
-
-        #v1 = pdf.ShowPdf()
-        ##v2 = v1.pdf_view(self.viewer, pdf_location=pdf_location_var, width = 77, height = 77)
-        #v2.pack(pady=10,padx=10)
-
-        #self.viewer.mainloop()
-
-
-
-
-
-class PDF_Viewer(object):
-    def __init__(self, pdf_location_var):
-
-        self.root = tk.Tk()
-        self.root.minsize(400,400)
-        self.root.maxsize(600,600)
-        self.root.title(pdf_location_var)
-
-
-
         v1 = pdf.ShowPdf()
-        v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 77, height = 100)
-        v2.pack(pady=(0,0))
+        v2 = v1.pdf_view(viewer, pdf_location=pdf_location_var, width=77, height=77)
+        v2.pack(pady=10, padx=10)
 
-        self.root.mainloop()
-
-
-
-#class User():
-   #def __init__(self, user_name, pass_word, user_number):
-        #self.user_number = user_number
-        #self.name = user_name
-        #self.password = pass_word
-
+    # destroy the home screen and delete PDF entries from the database
+    def on_closing(self):
+        self.root.destroy()
+        self.db_manager.delete_pdf_entries()
 
 if __name__ == "__main__":
-    #LoginScreen() Tabbed out currently to skip log in for practicality of testing
-
-
-    HomeScreen("Blank_User")
-
-
-
-
-
-
-
-
-
+    root = tk.Tk()  # creates the main window
+    login_screen = LoginScreen(root)
+    root.mainloop()

@@ -108,6 +108,21 @@ class DatabaseManager:
             if 'cursor' in locals() and cursor is not None:
                 cursor.close()
 
+    def is_pdf_table_empty(self):
+        try:
+            if self.connection:
+                cursor = self.connection.cursor()
+                select_query = "SELECT COUNT(*) FROM pdf_table"
+                cursor.execute(select_query)
+                count = cursor.fetchone()[0]
+                return count == 0
+        except mysql.connector.Error as err:
+            print("Error checking if PDF table is empty:", err)
+            return True  # Assuming an error indicates an empty table
+        finally:
+            if 'cursor' in locals() and cursor is not None:
+                cursor.close()
+
     # add a new note to the database
     def add_note(self, pdf_id, note_text):
         if self.connection:
@@ -217,4 +232,6 @@ When manipulating the notes, we can use the PDF ID to filter the notes. We can u
 
 Displaying the note retrieves the text based on the PDF ID, which is unique for each PDF.
 """
+
+
 
