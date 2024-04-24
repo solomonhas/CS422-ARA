@@ -26,7 +26,7 @@ class LoginScreen:
     def retrieve_input(self):
         username = self.username_textbox.get()
         password = self.password_textbox.get()
-        if (username == " " and password == " ") or (username == "1"):
+        if (username == "admin" and password == "admin") or (username == "1"):
             self.nextWindow()
         else:
             print("Incorrect Password")
