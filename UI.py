@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import *
 import os
 from tkPDFViewer import tkPDFViewer as pdf
-from Backend import database
+import database
 
 
 class LoginScreen:
