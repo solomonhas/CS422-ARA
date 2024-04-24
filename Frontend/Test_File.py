@@ -29,9 +29,6 @@ root.title("Group 6 ARA")
 pdf_1_button = Button(root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: open_pdf_viewer(test_file_1))
 pdf_1_button.pack(pady=10)
 
-#v1 = pdf.ShowPdf() 
-#v2 = v1.pdf_view(root, pdf_location=test_file_1, width = 77, height = 77) 
-#v2.pack(pady=10,padx=10)
 
 #pdf_2_button = Button(root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: open_pdf_viewer(test_file_2))
 #pdf_2_button.pack()
@@ -41,6 +38,7 @@ back_button.pack(pady=30)
 
 root.mainloop()
     
+
 
 
 
