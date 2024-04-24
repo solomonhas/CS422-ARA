@@ -77,3 +77,5 @@
   **Logged by:** Solomon Haskell
 - **Activities:**
   - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
+  - Added to requirements.
+  - Worked on the logic for pdf tables
