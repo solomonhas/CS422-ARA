@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import *
 import os
-#from tkPDFViewer import tkPDFViewer as pdf
+from tkPDFViewer import tkPDFViewer as pdf
 from Backend import database
 
 
@@ -116,6 +116,8 @@ class HomeScreen(object):
 
 
 
+
+
 class PDF_Viewer(object):
     def __init__(self, pdf_location_var):
 
@@ -134,14 +136,11 @@ class PDF_Viewer(object):
 
 
 
-
-
-
-class User():
-   def __init__(self, user_name, pass_word, user_number):
-        self.user_number = user_number
-        self.name = user_name
-        self.password = pass_word
+#class User():
+   #def __init__(self, user_name, pass_word, user_number):
+        #self.user_number = user_number
+        #self.name = user_name
+        #self.password = pass_word
 
 
 if __name__ == "__main__":
