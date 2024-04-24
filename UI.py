@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import Button, Entry, Toplevel
 import database
 from tkPDFViewer import tkPDFViewer as pdf
+import sys
 
 class LoginScreen:
     def __init__(self, root):
@@ -81,6 +82,7 @@ class HomeScreen:
     def on_closing(self):
         self.root.destroy()
         self.db_manager.delete_pdf_entries()
+        sys.exit()
 
 if __name__ == "__main__":
     root = tk.Tk()  # creates the main window
