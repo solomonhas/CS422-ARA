@@ -33,11 +33,11 @@ class DatabaseManager:
         os.chdir(pdf_directory)
         pdf_names = [filename for filename in os.listdir() if filename != "dummy"]
         pdf_names.sort()
-        file_data = [(i + 1, pdf_name) for i, pdf_name in enumerate(pdf_names)]
+        file_data = [(i + 1, pdf_name, os.path.join(pdf_directory, pdf_name)) for i, pdf_name in enumerate(pdf_names)]
         if self.connection:
             try:
                 cursor = self.connection.cursor()
-                insert_query = "INSERT INTO pdf_table (pdf_id, pdf_name) VALUES (%s, %s)"
+                insert_query = "INSERT INTO pdf_table (pdf_id, pdf_name, pdf_location) VALUES (%s, %s, %s)"
                 cursor.executemany(insert_query, file_data)
                 self.connection.commit()
                 print("PDFs loaded successfully!")
@@ -46,6 +46,8 @@ class DatabaseManager:
                 self.connection.rollback()
             finally:
                 cursor.close()
+        else:
+            print("No database connection.")
 
     # delete all entries from pdf_table
     def delete_pdf_entries(self):
@@ -85,6 +87,41 @@ class DatabaseManager:
         else:
             print("No database connection.")
             return None
+
+    def get_pdf_locations(self):
+        try:
+            if self.connection:
+                cursor = self.connection.cursor()
+                select_query = "SELECT pdf_location FROM pdf_table"
+                cursor.execute(select_query)
+                results = cursor.fetchall()
+                if results:
+                    pdf_locations = [row[0] for row in results]
+                    return pdf_locations
+                else:
+                    print("No PDF locations found in the database.")
+                    return []
+        except mysql.connector.Error as err:
+            print("Error fetching PDF locations:", err)
+            return []
+        finally:
+            if 'cursor' in locals() and cursor is not None:
+                cursor.close()
+
+    def is_pdf_table_empty(self):
+        try:
+            if self.connection:
+                cursor = self.connection.cursor()
+                select_query = "SELECT COUNT(*) FROM pdf_table"
+                cursor.execute(select_query)
+                count = cursor.fetchone()[0]
+                return count == 0
+        except mysql.connector.Error as err:
+            print("Error checking if PDF table is empty:", err)
+            return True  # Assuming an error indicates an empty table
+        finally:
+            if 'cursor' in locals() and cursor is not None:
+                cursor.close()
 
     # add a new note to the database
     def add_note(self, pdf_id, note_text):
@@ -195,3 +232,6 @@ When manipulating the notes, we can use the PDF ID to filter the notes. We can u
 
 Displaying the note retrieves the text based on the PDF ID, which is unique for each PDF.
 """
+
+
+
