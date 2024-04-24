@@ -117,9 +117,12 @@ class User():
 
 if __name__ == "__main__":
     #LoginScreen() Tabbed out currently to skip log in for practicality of testing
+    test_file_1 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
+    test_file_2 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\Resume 2_1_2024.pdf"
 
 
     HomeScreen("Blank_User")
+
 
 
 
