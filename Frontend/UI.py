@@ -1,10 +1,8 @@
 import tkinter as tk
 from tkinter import *
 import os
-from tkPDFViewer import tkPDFViewer as pdf
-
-test_file_1 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
-test_file_2 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\Resume 2_1_2024.pdf"
+#from tkPDFViewer import tkPDFViewer as pdf
+from Backend import database
 
 
 class LoginScreen:
@@ -44,24 +42,55 @@ class LoginScreen:
 
 class HomeScreen(object):
     def __init__(self, userid):
-
         self.root = tk.Tk()
-        self.root.minsize(600,400)
+        self.root.minsize(600, 400)
         self.root.title("Group 6 ARA")
 
-        print(userid) #Print the current user to terminal
+        # Initialize DatabaseManager
+        self.db_manager = database.DatabaseManager(
+            host='ix-dev.cs.uoregon.edu',
+            port=3056,
+            user='group6',
+            password='group6',
+            database='ara_db'
+        )
 
-        pdf_1_button = Button(self.root, text= "PDF 1",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file_1))
-        pdf_1_button.pack(pady=10)
+        # Fetch PDF locations from the database
+        pdf_locations = self.db_manager.get_pdf_locations()
 
-        pdf_2_button = Button(self.root, text= "PDF 2",height=1,width=1, padx=30, pady = 30, command=lambda: self.open_pdf_viewer(test_file_2))
-        pdf_2_button.pack()
+        # Create buttons for each PDF
+        for i, pdf_location in enumerate(pdf_locations):
+            pdf_button = Button(self.root, text=f"PDF {i+1}", height=1, width=1, padx=30, pady=30,
+                                command=lambda loc=pdf_location: self.open_pdf_viewer(loc))
+            pdf_button.pack(pady=10)
 
         back_button = Button(self.root, text="Back", command=lambda: self.back_to_login())
         back_button.pack(pady=30)
 
         self.root.mainloop()
-    
+
+    def back_to_login(self):
+        self.root.destroy()
+        LoginScreen()
+
+    def back_to_home(self):
+        self.viewer.destroy()
+        HomeScreen("Blank_User")
+
+    def open_pdf_viewer(self, pdf_location_var):
+        self.root.destroy()
+
+        self.viewer = tk.Tk()
+        self.viewer.title(pdf_location_var)
+
+        back_button = Button(self.viewer, text="Back", height=1, width=1, padx=100, command=lambda: self.back_to_home())
+        back_button.pack()
+
+        v1 = pdf.ShowPdf()
+        v2 = v1.pdf_view(self.viewer, pdf_location=pdf_location_var, width=77, height=77)
+        v2.pack(pady=10, padx=10)
+
+        self.viewer.mainloop()
     def back_to_login(self):
         self.root.destroy()
         LoginScreen()
@@ -79,8 +108,8 @@ class HomeScreen(object):
         back_button = Button(self.viewer, text="Back",height=1,width=1,padx=100, command=lambda: self.back_to_home())
         back_button.pack()
 
-        v1 = pdf.ShowPdf() 
-        v2 = v1.pdf_view(self.viewer, pdf_location=pdf_location_var, width = 77, height = 77) 
+        v1 = pdf.ShowPdf()
+        v2 = v1.pdf_view(self.viewer, pdf_location=pdf_location_var, width = 77, height = 77)
         v2.pack(pady=10,padx=10)
 
         self.viewer.mainloop()
@@ -97,8 +126,8 @@ class PDF_Viewer(object):
 
 
 
-        v1 = pdf.ShowPdf() 
-        v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 77, height = 100) 
+        v1 = pdf.ShowPdf()
+        v2 = v1.pdf_view(self.root, pdf_location=pdf_location_var, width = 77, height = 100)
         v2.pack(pady=(0,0))
 
         self.root.mainloop()
@@ -106,19 +135,17 @@ class PDF_Viewer(object):
 
 
 
-      
+
 
 class User():
    def __init__(self, user_name, pass_word, user_number):
         self.user_number = user_number
         self.name = user_name
         self.password = pass_word
-        
+
 
 if __name__ == "__main__":
     #LoginScreen() Tabbed out currently to skip log in for practicality of testing
-    test_file_1 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\sample.pdf"
-    test_file_2 = r"C:\Users\tarsa\OneDrive\Documents\GitHub\CS422-ARA\Frontend\Resume 2_1_2024.pdf"
 
 
     HomeScreen("Blank_User")
@@ -127,7 +154,6 @@ if __name__ == "__main__":
 
 
 
-    
 
 
 
