@@ -1,6 +1,6 @@
 import mysql.connector
 import os
-
+#
 class DatabaseManager:
     def __init__(self, host=None, port=None, user=None, password=None, database=None):
         if host is None or port is None or user is None or password is None or database is None:
