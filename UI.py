@@ -4,6 +4,7 @@ import database
 from tkPDFViewer import tkPDFViewer as pdf
 import sys
 
+
 class LoginScreen:
     def __init__(self, root):
         self.root = root
@@ -38,6 +39,7 @@ class HomeScreen:
         self.root.minsize(600, 400)
         self.root.title("Group 6 ARA")
 
+
         self.db_manager = database.DatabaseManager(
             host='ix-dev.cs.uoregon.edu',
             port=3056,
@@ -68,6 +70,7 @@ class HomeScreen:
 
         # open PDF viewer for the selected PDF location
     def open_pdf_viewer(self, pdf_location_var):
+
         viewer = Toplevel(self.root)
         viewer.title(pdf_location_var)
 
@@ -75,8 +78,10 @@ class HomeScreen:
         back_button.pack()
 
         v1 = pdf.ShowPdf()
+        v1.img_object_li.clear() # clear previous images
         v2 = v1.pdf_view(viewer, pdf_location=pdf_location_var, width=77, height=77)
         v2.pack(pady=10, padx=10)
+
 
     # destroy the home screen and delete PDF entries from the database
     def on_closing(self):
