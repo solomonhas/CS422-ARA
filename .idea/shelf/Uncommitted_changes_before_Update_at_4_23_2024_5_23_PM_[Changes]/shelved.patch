@@ -1,0 +1,14 @@
+Index: Frontend/UI.py
+===================================================================
+diff --git a/Frontend/UI.py b/Frontend/UI.py
+--- a/Frontend/UI.py	
++++ b/Frontend/UI.py	
+@@ -119,7 +119,7 @@
+ class PDF_Viewer(object):
+     def __init__(self, pdf_location_var):
+ 
+-        self.root = tk.Tk()
++        self.root = tk.Toplevel()
+         self.root.minsize(400,400)
+         self.root.maxsize(600,600)
+         self.root.title(pdf_location_var)
