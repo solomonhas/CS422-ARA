@@ -3,7 +3,22 @@ import os
 
 
 class DatabaseManager:
-    def __init__(self, host, port, user, password, database):
+    def __init__(self, host=None, port=None, user=None, password=None, database=None):
+        # If database credentials are not provided, attempt to load from configuration file or environment variables
+        if host is None or port is None or user is None or password is None or database is None:
+            # Load database credentials from configuration file or environment variables
+            host = os.getenv('DB_HOST')
+            port = os.getenv('DB_PORT')
+            user = os.getenv('DB_USER')
+            password = os.getenv('DB_PASSWORD')
+            database = os.getenv('DB_DATABASE')
+
+        # If database credentials are still None, raise an error
+        if host is None or port is None or user is None or password is None or database is None:
+            raise ValueError(
+                "Database credentials not provided and could not be loaded from configuration file or environment variables.")
+
+        # Store the database credentials
         self.host = host
         self.port = port
         self.user = user
@@ -214,6 +229,8 @@ class DatabaseManager:
             if 'cursor' in locals() and cursor is not None:
                 cursor.close()
 
+
+"""
 db_manager = DatabaseManager(
     host='ix-dev.cs.uoregon.edu',
     port=3056,
@@ -221,16 +238,6 @@ db_manager = DatabaseManager(
     password='group6',
     database='ara_db'
 )
-"""
-How it works:
-
-When adding a new note, you provide it with a PDF ID, which associates the note with a specific PDF.
-
-In the notes table, there is a column that holds PDF IDs.
-
-When manipulating the notes, we can use the PDF ID to filter the notes. We can use the "check if exists" function to see if the note already exists using the PDF ID and note text.
-
-Displaying the note retrieves the text based on the PDF ID, which is unique for each PDF.
 """
 
 

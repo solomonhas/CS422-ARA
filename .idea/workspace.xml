@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29d62049-ece4-498c-9007-a168c5a46f03" name="Changes" comment="Open PDf works also added when the program open the pdf is auto init and del when ended" />
+    <list default="true" id="29d62049-ece4-498c-9007-a168c5a46f03" name="Changes" comment="fixed program not closing properly">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +62,9 @@
       <workItem from="1713852076172" duration="7783000" />
       <workItem from="1713861230383" duration="286000" />
       <workItem from="1713915124267" duration="3107000" />
-      <workItem from="1713918242560" duration="8515000" />
+      <workItem from="1713918242560" duration="8831000" />
+      <workItem from="1713993774656" duration="11635000" />
+      <workItem from="1714006178141" duration="749000" />
     </task>
     <task id="LOCAL-00001" summary="added fuctionality to the database tables &quot;pdf&quot; and &quot;notes&quot;">
       <created>1713860630121</created>
@@ -80,7 +87,21 @@
       <option name="project" value="LOCAL" />
       <updated>1713938305240</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="password change for easier testing">
+      <created>1713938390996</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713938390996</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed program not closing properly">
+      <created>1713938665471</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1713938665471</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,7 +123,9 @@
     <MESSAGE value="added fuctionality to the database tables &quot;pdf&quot; and &quot;notes&quot;" />
     <MESSAGE value="connected table to the pdf fucntionality" />
     <MESSAGE value="Open PDf works also added when the program open the pdf is auto init and del when ended" />
-    <option name="LAST_COMMIT_MESSAGE" value="Open PDf works also added when the program open the pdf is auto init and del when ended" />
+    <MESSAGE value="password change for easier testing" />
+    <MESSAGE value="fixed program not closing properly" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed program not closing properly" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CS422_ARA$Coding_With_Evan_Notepad.coverage" NAME="Coding_With_Evan_Notepad Coverage Results" MODIFIED="1713765205820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Notepads" />
@@ -110,9 +133,9 @@
     <SUITE FILE_PATH="coverage/CS422_ARA$Data_Flair_Python_Notepad.coverage" NAME="Data_Flair_Python_Notepad Coverage Results" MODIFIED="1713852182481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Notepads" />
     <SUITE FILE_PATH="coverage/CS422_ARA$sql_functions.coverage" NAME="sql_functions Coverage Results" MODIFIED="1713762073395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
     <SUITE FILE_PATH="coverage/CS422_ARA$Chapter_Select.coverage" NAME="Chapter_Select Coverage Results" MODIFIED="1713852191425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Ui and Chapter select" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$database.coverage" NAME="database Coverage Results" MODIFIED="1713934458296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$database.coverage" NAME="database Coverage Results" MODIFIED="1713998172451" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CS422_ARA$chapter_note_storage.coverage" NAME="chapter_note_storage Coverage Results" MODIFIED="1713764131276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$UI.coverage" NAME="UI Coverage Results" MODIFIED="1713938356526" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$UI.coverage" NAME="UI Coverage Results" MODIFIED="1714006926759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CS422_ARA$GG_pages.coverage" NAME="GG_pages Coverage Results" MODIFIED="1713852202724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker" />
     <SUITE FILE_PATH="coverage/CS422_ARA$retrieve_pdf.coverage" NAME="retrieve_pdf Coverage Results" MODIFIED="1713765557375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
   </component>
