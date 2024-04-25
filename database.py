@@ -1,19 +1,15 @@
 import mysql.connector
 import os
 
-
 class DatabaseManager:
     def __init__(self, host=None, port=None, user=None, password=None, database=None):
-        # If database credentials are not provided, attempt to load from configuration file or environment variables
         if host is None or port is None or user is None or password is None or database is None:
-            # Load database credentials from configuration file or environment variables
             host = os.getenv('DB_HOST')
             port = os.getenv('DB_PORT')
             user = os.getenv('DB_USER')
             password = os.getenv('DB_PASSWORD')
             database = os.getenv('DB_DATABASE')
 
-        # If database credentials are still None, raise an error
         if host is None or port is None or user is None or password is None or database is None:
             raise ValueError(
                 "Database credentials not provided and could not be loaded from configuration file or environment variables.")
@@ -26,7 +22,6 @@ class DatabaseManager:
         self.database = database
         self.connection = self.connect_to_database()
 
-    #  connect to the mysql database
     def connect_to_database(self):
         try:
             connection = mysql.connector.connect(
@@ -42,7 +37,6 @@ class DatabaseManager:
             print("Error connecting to MySQL:", err)
             return None
 
-    # create the pdf_table and insert pdfs
     def build_pdf_table(self):
         pdf_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "pdfs")
         os.chdir(pdf_directory)
@@ -64,7 +58,27 @@ class DatabaseManager:
         else:
             print("No database connection.")
 
-    # delete all entries from pdf_table
+    def update_pdf_locations(self):
+        try:
+            if self.connection:
+                cursor = self.connection.cursor()
+                pdf_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "pdfs")
+                os.chdir(pdf_directory)
+                pdf_names = [filename for filename in os.listdir() if filename != "dummy"]
+                pdf_names.sort()
+                for i, pdf_name in enumerate(pdf_names):
+                    update_query = "UPDATE pdf_table SET pdf_location = %s WHERE pdf_name = %s"
+                    update_data = (os.path.join(pdf_directory, pdf_name), pdf_name)
+                    cursor.execute(update_query, update_data)
+                self.connection.commit()
+                print("PDF locations updated successfully!")
+        except mysql.connector.Error as err:
+            print("Error updating PDF locations:", err)
+            self.connection.rollback()
+        finally:
+            if 'cursor' in locals() and cursor is not None:
+                cursor.close()
+
     def delete_pdf_entries(self):
         if self.connection:
             try:
@@ -79,7 +93,6 @@ class DatabaseManager:
             finally:
                 cursor.close()
 
-    # get the pdf_id for a given pdf_name
     def get_pdf_id(self, pdf_name):
         select_data = (pdf_name,)
         if self.connection:
@@ -138,13 +151,12 @@ class DatabaseManager:
             if 'cursor' in locals() and cursor is not None:
                 cursor.close()
 
-    # add a new note to the database
-    def add_note(self, pdf_id, note_text):
+    def add_note(self, pdf_id, note_name, note_text):
         if self.connection:
             try:
                 cursor = self.connection.cursor()
-                insert_query = "INSERT INTO notes (pdf_id, note) VALUES (%s, %s)"
-                insert_data = (pdf_id, note_text)
+                insert_query = "INSERT INTO notes (pdf_id, note_name, note) VALUES (%s, %s, %s)"
+                insert_data = (pdf_id, note_name, note_text)
                 cursor.execute(insert_query, insert_data)
                 self.connection.commit()
                 print("Note added successfully!")
@@ -153,8 +165,9 @@ class DatabaseManager:
                 self.connection.rollback()
             finally:
                 cursor.close()
+        else:
+            print("No database connection.")
 
-    # update the text of a note in the database by note_id
     def delete_note(self, note_id):
         if self.connection:
             try:
@@ -169,7 +182,6 @@ class DatabaseManager:
             finally:
                 cursor.close()
 
-    # display the text of a note from the database by note_id
     def update_note(self, note_id, new_note_text):
         if self.connection:
             try:
@@ -185,7 +197,6 @@ class DatabaseManager:
             finally:
                 cursor.close()
 
-    # display the text of a note from the database by note_id
     def display_note(self, pdf_id):
         try:
             if self.connection:
@@ -208,7 +219,6 @@ class DatabaseManager:
             if 'cursor' in locals() and cursor is not None:
                 cursor.close()
 
-    # check if a note exists for a given pdf_id and note_text
     def note_exists(self, pdf_id, note_text):
         try:
             if self.connection:
@@ -228,17 +238,3 @@ class DatabaseManager:
         finally:
             if 'cursor' in locals() and cursor is not None:
                 cursor.close()
-
-
-"""
-db_manager = DatabaseManager(
-    host='ix-dev.cs.uoregon.edu',
-    port=3056,
-    user='group6',
-    password='group6',
-    database='ara_db'
-)
-"""
-
-
-
