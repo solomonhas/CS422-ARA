@@ -12,7 +12,6 @@ class LoginScreen:
     def __init__(self, root):
         """Initialize the LoginScreen class."""
         self.root = root
-        self.root.configure(highlightbackground="red")
         self.root.minsize(400, 300)
         self.root.title("Group 6 Active-Reading Assistant")
 
@@ -129,7 +128,7 @@ class HomeScreen:
     def __init__(self, userid, login_root, host, port, username, password):
         self.login_root = login_root
         self.root = tk.Toplevel(login_root)
-        self.root.minsize(600, 400)
+        self.root.minsize(800, 600)
         self.root.title("group 6 ara")
 
         self.original_pdf_location = None  # Store the original PDF location
@@ -148,7 +147,7 @@ class HomeScreen:
 
         # Create buttons for each PDF location
         for i, pdf_location in enumerate(pdf_locations):
-            pdf_button = Button(self.root, text=f"pdf {i + 1}", height=1, width=1, padx=30, pady=30,
+            pdf_button = Button(self.root, text=f"pdf {i + 1}", height=1, width=1, padx=50, pady=30,
                                 command=lambda loc=pdf_location: self.open_pdf_viewer(loc, None))
             pdf_button.pack(pady=10)
 
@@ -172,6 +171,7 @@ class HomeScreen:
         self.root.destroy()
         self.login_root.deiconify()
 
+
     # Open a PDF viewer window
     def open_pdf_viewer(self, original_pdf_location, highlighted_pdf_location=None):
         if hasattr(self, 'viewer'):
@@ -182,18 +182,31 @@ class HomeScreen:
         # Determine the PDF location to display
         if highlighted_pdf_location:
             pdf_location_var = highlighted_pdf_location
+            self.show_highlighted_button_text = "Hide Highlighted"
+            self.show_highlighted_command = self.hide_highlighted_pdf
         else:
             pdf_location_var = original_pdf_location
+            self.show_highlighted_button_text = "Show Highlighted"
+            self.show_highlighted_command = lambda: self.show_highlighted_pdf(pdf_name)
 
         # Create a Toplevel window for the PDF viewer
         self.viewer = Toplevel(self.root)
         self.viewer.title(pdf_location_var)
+        self.viewer.minsize(900, 700)  # Adjusted minimum size
+
+        # Create a frame for buttons at the top
+        self.button_frame = tk.Frame(self.viewer)
+        self.button_frame.pack(side="top", fill="x", padx=10, pady=10)  # Increased padding
+
+        # Create a frame for the notes dropdown menu and other buttons
+        self.top_frame = tk.Frame(self.viewer)
+        self.top_frame.pack(side="top", fill="x", padx=10, pady=10)  # Increased padding
 
         # Create a canvas for displaying PDF pages and a vertical scrollbar
-        canvas = tk.Canvas(self.viewer)
-        canvas.pack(side="left", fill="both", expand=True)
+        canvas = tk.Canvas(self.viewer, width=800)
+        canvas.pack(side="left", fill="both", expand=True, padx=10, pady=10)  # padd for pdf
         scrollbar = tk.Scrollbar(self.viewer, orient="vertical", command=canvas.yview)
-        scrollbar.pack(side="right", fill="y")
+        scrollbar.pack(side="right", fill="y", padx=10, pady=10)  # Increased padding
         canvas.configure(yscrollcommand=scrollbar.set)
 
         # Open the PDF document
@@ -224,55 +237,57 @@ class HomeScreen:
 
         # Create frame for notes
         self.notes_frame = tk.Frame(self.viewer)
-        self.notes_frame.pack(side="right", fill="y")
+        self.notes_frame.pack(side="bottom", fill="both", expand=True)  # Increased padding
+        self.notes_frame.pack_propagate(0)  # Prevent automatic resizing
 
         # Create widgets for adding, deleting, and managing notes
-        note_name_label = Label(self.notes_frame, text="Note Name:")
-        note_name_label.pack()
-        note_name_entry = Entry(self.notes_frame)
-        note_name_entry.pack()
+        note_name_label = Label(self.top_frame, text="Note Name:")
+        note_name_label.pack(side="left", padx=5)
+        note_name_entry = Entry(self.top_frame)
+        note_name_entry.pack(side="left", padx=5)
         self.note_name_entry = note_name_entry
 
         pdf_name = os.path.basename(pdf_location_var)
         pdf_id = self.db_manager.get_pdf_id(pdf_name)
         notes = self.db_manager.get_notes(pdf_id)
 
-        self.notes_menu_var = tk.StringVar(self.notes_frame)
+        self.notes_menu_var = tk.StringVar(self.top_frame)
         self.notes_menu_var.set("Select Note")
-        self.notes_menu = tk.OptionMenu(self.notes_frame, self.notes_menu_var, "Select Note", *notes)
-        self.notes_menu.pack()
+        self.notes_menu = tk.OptionMenu(self.top_frame, self.notes_menu_var, "Select Note", *notes)
+        self.notes_menu.pack(side="left", padx=5)
 
-        notes_label = Label(self.notes_frame, text="Notes")
-        notes_label.pack()
+        notes_label = Label(self.top_frame, text="Notes")
+        notes_label.pack(side="left", padx=5)
 
-        self.notes_text = Text(self.notes_frame, wrap=tk.WORD, height=20, width=40)
-        self.notes_text.pack()
+        self.notes_text = Text(self.viewer, wrap=tk.WORD, height=50, width=70)  # Adjusted height and width
 
-        add_note_button = Button(self.notes_frame, text="Save Note",
+        # paddy for notes
+        self.notes_text.pack(side="bottom", padx=5, pady=5)
+
+        add_note_button = Button(self.top_frame, text="Save Note",
                                  command=lambda: self.add_note_to_db(pdf_id, self.note_name_entry.get(),
                                                                      self.notes_text))
-        add_note_button.pack()
+        add_note_button.pack(side="left", padx=5)
 
-        delete_note_button = Button(self.notes_frame, text="Delete Note",
+        delete_note_button = Button(self.top_frame, text="Delete Note",
                                     command=lambda: self.delete_note_from_db(pdf_id))
-        delete_note_button.pack()
+        delete_note_button.pack(side="left", padx=5)
 
-        load_note_button = Button(self.notes_frame, text="Load Note", command=lambda: self.load_selected_note(pdf_id))
-        load_note_button.pack()
+        load_note_button = Button(self.top_frame, text="Load Note", command=lambda: self.load_selected_note(pdf_id))
+        load_note_button.pack(side="left", padx=5)
 
-        if highlighted_pdf_location:
-            self.show_highlighted_button = Button(self.notes_frame, text="Hide Highlighted",
-                                                  command=self.hide_highlighted_pdf)
-        else:
-            self.show_highlighted_button = Button(self.notes_frame, text="Show Highlighted",
-                                                  command=lambda: self.show_highlighted_pdf(pdf_name))
-        self.show_highlighted_button.pack()
+        back_button = Button(self.top_frame, text="Back", command=self.viewer.destroy)
+        back_button.pack(side="left", padx=5)
 
-        back_button = Button(self.notes_frame, text="Back", command=self.viewer.destroy)
-        back_button.pack()
+        # Create Show/Hide Highlighted button
+        self.show_highlighted_button = Button(self.top_frame, text=self.show_highlighted_button_text,
+                                              command=self.show_highlighted_command)
+        self.show_highlighted_button.pack(side="left", padx=5)
 
-        self.show_hide_notes_button = Button(self.notes_frame, text="Hide Notes", command=self.toggle_notes)
-        self.show_hide_notes_button.pack()
+        self.show_hide_notes_button = Button(self.top_frame, text="Hide Notes", command=self.toggle_notes)
+        self.show_hide_notes_button.pack(side="left", padx=5)
+
+        self.viewer.attributes('-topmost', False)
 
     # Toggle the display of notes
     def toggle_notes(self):
@@ -284,6 +299,9 @@ class HomeScreen:
             self.show_notes()
             self.show_hide_notes_button.config(text="Hide Notes")
             self.show_notes_flag = True
+
+
+
 
     # Hide the notes
     def hide_notes(self):

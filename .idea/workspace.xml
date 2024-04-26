@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29d62049-ece4-498c-9007-a168c5a46f03" name="Changes" comment="can now scroll and add notes (no delete or load)">
-      <change afterPath="$PROJECT_DIR$/highlighted/dummy1.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/highlighted/dummy2.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/highlighted/dummy3.pdf" afterDir="false" />
+    <list default="true" id="29d62049-ece4-498c-9007-a168c5a46f03" name="Changes" comment="backend folder clean">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfs/dummy1.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/pdfs/dummy1.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfs/dummy2.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/pdfs/dummy2.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdfs/dummy3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/pdfs/dummy3.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +21,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2fQrhL6iojsQ8xmY1E5fR9f6d7U" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -36,23 +29,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Users/areya/Desktop/422 Project/CS422-ARA",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Users/areya/Desktop/422 Project/CS422-ARA&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Users\areya\Desktop\422 Project\CS422-ARA\pdfs" />
@@ -77,7 +70,9 @@
       <workItem from="1714006178141" duration="3769000" />
       <workItem from="1714018148013" duration="7989000" />
       <workItem from="1714026508435" duration="471000" />
-      <workItem from="1714074182200" duration="15433000" />
+      <workItem from="1714074182200" duration="21704000" />
+      <workItem from="1714115611853" duration="1581000" />
+      <workItem from="1714162702181" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="added fuctionality to the database tables &quot;pdf&quot; and &quot;notes&quot;">
       <created>1713860630121</created>
@@ -142,7 +137,21 @@
       <option name="project" value="LOCAL" />
       <updated>1714026635536</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="implemented pdf view and note system almost full fucntionality (need higharchy)">
+      <created>1714109375530</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1714109375530</updated>
+    </task>
+    <task id="LOCAL-00011" summary="made GUi look nicer">
+      <created>1714115388928</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1714115388928</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,20 +178,24 @@
     <MESSAGE value="No more tkpdfview" />
     <MESSAGE value="cannot scroll" />
     <MESSAGE value="can now scroll and add notes (no delete or load)" />
-    <option name="LAST_COMMIT_MESSAGE" value="can now scroll and add notes (no delete or load)" />
+    <MESSAGE value="implemented pdf view and note system almost full fucntionality (need higharchy)" />
+    <MESSAGE value="made GUi look nicer" />
+    <option name="LAST_COMMIT_MESSAGE" value="made GUi look nicer" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS422_ARA$Coding_With_Evan_Notepad.coverage" NAME="Coding_With_Evan_Notepad Coverage Results" MODIFIED="1714019069331" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Notepads" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$CodeWorked_page_swap.coverage" NAME="CodeWorked_page_swap Coverage Results" MODIFIED="1714007532947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Ui and Chapter select" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$Data_Flair_Python_Notepad.coverage" NAME="Data_Flair_Python_Notepad Coverage Results" MODIFIED="1714019064510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Notepads" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$sql_functions.coverage" NAME="sql_functions Coverage Results" MODIFIED="1713762073395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$Chapter_Select.coverage" NAME="Chapter_Select Coverage Results" MODIFIED="1714019047200" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Ui and Chapter select" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$database.coverage" NAME="database Coverage Results" MODIFIED="1714108948871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1714007294328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_HOME_DIR$/CS422-ARA/Lib/site-packages/fitz" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$Chapter_Select.coverage" NAME="Chapter_Select Coverage Results" MODIFIED="1713836460366" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Ui and Chapter select" />
     <SUITE FILE_PATH="coverage/CS422_ARA$chapter_note_storage.coverage" NAME="chapter_note_storage Coverage Results" MODIFIED="1713764131276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$UI.coverage" NAME="UI Coverage Results" MODIFIED="1714108935816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$GG_pages.coverage" NAME="GG_pages Coverage Results" MODIFIED="1714019041160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker" />
-    <SUITE FILE_PATH="coverage/CS422_ARA$retrieve_pdf.coverage" NAME="retrieve_pdf Coverage Results" MODIFIED="1713765557375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$CodeWorked_page_swap.coverage" NAME="CodeWorked_page_swap Coverage Results" MODIFIED="1713836469083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Ui and Chapter select" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1714007294328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_HOME_DIR$/CS422-ARA/Lib/site-packages/fitz" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$UI.coverage" NAME="UI Coverage Results" MODIFIED="1714163437627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$send_pdf_to_database.coverage" NAME="send_pdf_to_database Coverage Results" MODIFIED="1713774983444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$GG_pages.coverage" NAME="GG_pages Coverage Results" MODIFIED="1713836450117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker" />
     <SUITE FILE_PATH="coverage/CS422_ARA$cursor_cext.coverage" NAME="cursor_cext Coverage Results" MODIFIED="1714108336729" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_HOME_DIR$/CS422-ARA/Lib/site-packages/mysql/connector" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$sql_functions.coverage" NAME="sql_functions Coverage Results" MODIFIED="1713774733870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$retrieve_pdf.coverage" NAME="retrieve_pdf Coverage Results" MODIFIED="1713765557375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$Coding_With_Evan_Notepad.coverage" NAME="Coding_With_Evan_Notepad Coverage Results" MODIFIED="1713765205820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Notepads" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$communication.coverage" NAME="communication Coverage Results" MODIFIED="1713752559163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$Data_Flair_Python_Notepad.coverage" NAME="Data_Flair_Python_Notepad Coverage Results" MODIFIED="1713836477736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/note taker/Notepads" />
+    <SUITE FILE_PATH="coverage/CS422_ARA$database.coverage" NAME="database Coverage Results" MODIFIED="1713896672810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
   </component>
 </project>
