@@ -171,6 +171,7 @@ class HomeScreen:
         self.root.destroy()
         self.login_root.deiconify()
 
+
     # Open a PDF viewer window
     def open_pdf_viewer(self, original_pdf_location, highlighted_pdf_location=None):
         if hasattr(self, 'viewer'):
@@ -203,7 +204,7 @@ class HomeScreen:
 
         # Create a canvas for displaying PDF pages and a vertical scrollbar
         canvas = tk.Canvas(self.viewer, width=800)
-        canvas.pack(side="left", fill="both", expand=True, padx=10, pady=10)  # Increased padding
+        canvas.pack(side="left", fill="both", expand=True, padx=10, pady=10)  # padd for pdf
         scrollbar = tk.Scrollbar(self.viewer, orient="vertical", command=canvas.yview)
         scrollbar.pack(side="right", fill="y", padx=10, pady=10)  # Increased padding
         canvas.configure(yscrollcommand=scrollbar.set)
@@ -258,9 +259,9 @@ class HomeScreen:
         notes_label = Label(self.top_frame, text="Notes")
         notes_label.pack(side="left", padx=5)
 
-        self.notes_text = Text(self.viewer, wrap=tk.WORD, height=50, width=50)  # Adjusted height and width
+        self.notes_text = Text(self.viewer, wrap=tk.WORD, height=50, width=70)  # Adjusted height and width
 
-        # Pack the notes_text widget directly
+        # paddy for notes
         self.notes_text.pack(side="bottom", padx=5, pady=5)
 
         add_note_button = Button(self.top_frame, text="Save Note",
@@ -298,6 +299,9 @@ class HomeScreen:
             self.show_notes()
             self.show_hide_notes_button.config(text="Hide Notes")
             self.show_notes_flag = True
+
+
+
 
     # Hide the notes
     def hide_notes(self):
