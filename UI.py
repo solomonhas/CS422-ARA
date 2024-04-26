@@ -181,8 +181,12 @@ class HomeScreen:
         # Determine the PDF location to display
         if highlighted_pdf_location:
             pdf_location_var = highlighted_pdf_location
+            self.show_highlighted_button_text = "Hide Highlighted"
+            self.show_highlighted_command = self.hide_highlighted_pdf
         else:
             pdf_location_var = original_pdf_location
+            self.show_highlighted_button_text = "Show Highlighted"
+            self.show_highlighted_command = lambda: self.show_highlighted_pdf(pdf_name)
 
         # Create a Toplevel window for the PDF viewer
         self.viewer = Toplevel(self.root)
@@ -273,6 +277,11 @@ class HomeScreen:
 
         back_button = Button(self.top_frame, text="Back", command=self.viewer.destroy)
         back_button.pack(side="left", padx=5)
+
+        # Create Show/Hide Highlighted button
+        self.show_highlighted_button = Button(self.top_frame, text=self.show_highlighted_button_text,
+                                              command=self.show_highlighted_command)
+        self.show_highlighted_button.pack(side="left", padx=5)
 
         self.show_hide_notes_button = Button(self.top_frame, text="Hide Notes", command=self.toggle_notes)
         self.show_hide_notes_button.pack(side="left", padx=5)
