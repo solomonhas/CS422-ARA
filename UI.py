@@ -287,6 +287,25 @@ class HomeScreen:
         self.show_hide_notes_button = Button(self.top_frame, text="Hide Notes", command=self.toggle_notes)
         self.show_hide_notes_button.pack(side="left", padx=5)
 
+        add_chapter_button = Button(self.button_frame, text="Add Chapter", command=self.add_chapter)
+        add_chapter_button.pack(side="right", padx=5)  # Align to the right
+
+        # Add Section button
+        add_section_button = Button(self.button_frame, text="Add Section", command=self.add_section)
+        add_section_button.pack(side="right", padx=5)  # Align to the right
+
+        self.section_heading_label = Label(self.top_frame, text="Section Heading:")
+        self.section_heading_label.pack(side="left", padx=(0, 5))  # Aligns to the left with some right padding
+
+        self.section_heading_entry = Entry(self.top_frame)
+        self.section_heading_entry.pack(side="left")  # Aligns to the left
+
+        self.chapter_title_label = Label(self.top_frame, text="Chapter Title:")
+        self.chapter_title_label.pack(side="left", padx=(0, 5))  # Aligns to the left with some right padding
+
+        self.chapter_title_entry = Entry(self.top_frame)
+        self.chapter_title_entry.pack(side="left")  # Aligns to the left
+
         self.viewer.attributes('-topmost', False)
 
     # Toggle the display of notes
@@ -401,6 +420,36 @@ class HomeScreen:
         else:
             messagebox.showwarning("Note Not Selected", "Please select a note to load.")
             messagebox.showwarning("Note Not Selected", "Please select a note to load.")
+
+    def add_chapter(self):
+        if hasattr(self, 'viewer'):
+            chapter_title = self.chapter_title_entry.get()
+            if chapter_title:
+                # Calculate the number of spaces needed to center the text
+                num_spaces = (self.notes_text['width'] - len(chapter_title)) // 2
+                # Add the chapter title with a line above and below it, centered within the notes textbox
+                self.notes_text.insert(tk.END, f"{'-' * self.notes_text['width']}\n"
+                                               f"{' ' * num_spaces}{chapter_title}\n"
+                                               f"{'-' * self.notes_text['width']}\n\n")
+                # Inform the user
+                messagebox.showinfo("Chapter Added", f"Chapter '{chapter_title}' added to notes successfully!")
+            else:
+                messagebox.showwarning("Empty Chapter Title", "Please enter a chapter title.")
+        else:
+            messagebox.showwarning("PDF Viewer Not Active", "Please open a PDF viewer to add a chapter.")
+
+    def add_section(self):
+        if hasattr(self, 'viewer'):
+            section_heading = self.section_heading_entry.get()
+            if section_heading:
+                # Add the section heading to the notes textbox
+                self.notes_text.insert(tk.END, f"\n\n{section_heading}:\n\n")
+                # Inform the user
+                messagebox.showinfo("Section Added", "Section '{}' added successfully!".format(section_heading))
+            else:
+                messagebox.showwarning("Empty Section Heading", "Please enter a section heading.")
+        else:
+            messagebox.showwarning("PDF Viewer Not Active", "Please open a PDF viewer to add a section.")
 
     # Main function to start the application
 if __name__ == "__main__":
