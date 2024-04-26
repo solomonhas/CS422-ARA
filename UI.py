@@ -14,7 +14,7 @@ class LoginScreen:
         self.root = root
         self.root.configure(highlightbackground="red")
         self.root.minsize(400, 300)
-        self.root.title("group 6 ara")
+        self.root.title("Group 6 Active-Reading Assistant")
 
         self.create_widgets()
 
