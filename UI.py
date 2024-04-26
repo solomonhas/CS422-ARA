@@ -13,7 +13,7 @@ class LoginScreen:
         """Initialize the LoginScreen class."""
         self.root = root
         self.root.minsize(400, 300)
-        self.root.title("Group 6 Active-Reading Assistant")
+        self.root.title("group 6 ara")
 
         self.create_widgets()
 
