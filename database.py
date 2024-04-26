@@ -117,18 +117,18 @@ class DatabaseManager:
 
     def get_pdf_id(self, pdf_name):
         # Method to retrieve the ID of a PDF from the database based on its name
-        select_data = (pdf_name,)
+        select_data = (pdf_name,) #Get the data aka the name 
         if self.connection:
             try:
                 cursor = self.connection.cursor()
-                select_query = "SELECT pdf_id FROM pdf_table WHERE pdf_name = %s"
+                select_query = "SELECT pdf_id FROM pdf_table WHERE pdf_name = %s" #get pdf_id
                 cursor.execute(select_query, select_data)
                 result = cursor.fetchone()
                 if result:
-                    pdf_id = result[0]
+                    pdf_id = result[0] #if it exists return the pdf_id
                     return pdf_id
                 else:
-                    print("PDF not found in the database.")
+                    print("PDF not found in the database.") #If you dont find the pdf_id in the table, its not in the databse
                     return None
             except mysql.connector.Error as err:
                 print("Error retrieving PDF ID:", err)
@@ -144,7 +144,7 @@ class DatabaseManager:
         try:
             if self.connection:
                 cursor = self.connection.cursor()
-                select_query = "SELECT pdf_location FROM pdf_table"
+                select_query = "SELECT pdf_location FROM pdf_table" #same as id but for location
                 cursor.execute(select_query)
                 results = cursor.fetchall()
                 if results:
@@ -183,6 +183,7 @@ class DatabaseManager:
 
     def is_pdf_table_empty(self):
         # Method to check if the PDF table in the database is empty
+        #I orginally had this to check the table for debugging but not sure if it is needed still.
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -228,7 +229,8 @@ class DatabaseManager:
         if self.connection:
             try:
                 cursor = self.connection.cursor()
-                delete_query = "DELETE FROM notes WHERE note_id = %s"
+                delete_query = "DELETE FROM notes WHERE note_id = %s" #DELTE FROM, the notes table using the note_id
+                                                                      #this will be called sometimes but not much
                 cursor.execute(delete_query, (note_id,))
                 self.connection.commit()
                 print("Note deleted successfully!")
@@ -257,6 +259,8 @@ class DatabaseManager:
                 cursor.close()
 
     def display_note(self, pdf_id):
+        #This function is just to display the note text given the note id
+        #note id is linked to pdf id
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -282,7 +286,7 @@ class DatabaseManager:
         try:
             if self.connection:
                 cursor = self.connection.cursor()
-                select_query = "SELECT COUNT(*) FROM notes WHERE pdf_id = %s AND note = %s"
+                select_query = "SELECT COUNT(*) FROM notes WHERE pdf_id = %s AND note = %s" #
                 cursor.execute(select_query, (pdf_id, note_text))
                 count = cursor.fetchone()[0]
                 if count > 0:
