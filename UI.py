@@ -169,7 +169,7 @@ class HomeScreen:
         self.prompt_visibility_checkbox = tk.Checkbutton(self.root, text="Show a Prompt",
                                                          variable=self.prompt_visibility_var,
                                                          command=self.toggle_prompts)
-        self.prompt_visibility_checkbox.pack(side="top", padx=10, pady=10)
+        self.prompt_visibility_checkbox.pack(side="bottom", padx=10, pady=10)
 
         # Add a label to display prompts
         self.prompt_label = tk.Label(self.prompt_frame, text="", font=("Arial", 12, "bold"))
