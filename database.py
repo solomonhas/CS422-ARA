@@ -41,6 +41,15 @@ class DatabaseManager:
             print("Error connecting to MySQL:", err)
             return None
 
+    def is_valid_credentials(self):
+        """
+        Check if the provided MySQL server credentials are valid.
+
+        Returns:
+            bool: True if the credentials are valid, False otherwise.
+        """
+        return self.connection is not None
+
     def build_pdf_table(self):
         # Method to populate the PDF table in the database with PDF file locations
         # Retrieves PDF file names from a directory, constructs file paths, and inserts into the database

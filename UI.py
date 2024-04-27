@@ -5,21 +5,29 @@ import fitz
 import sys
 import tkinter.messagebox as messagebox
 import os
-import mysql.connector
 import random
 
 #
 class LoginScreen:
     def __init__(self, root):
-        """Initialize the LoginScreen class."""
+        """
+        Initialize the LoginScreen instance.
+
+        Parameters:
+            root (tk.Tk): The main window for the application.
+        """
         self.root = root
         self.root.minsize(400, 300)
         self.root.title("group 6 ara")
 
         self.create_widgets()
 
+
     # Create the widgets for the login screen
     def create_widgets(self):
+        """
+        Create and arrange the widgets within the login window.
+        """
         self.login_frame = tk.Frame(self.root)
         self.login_frame.pack(padx=10, pady=10)
 
@@ -66,6 +74,9 @@ class LoginScreen:
 
     # Show the server login fields
     def show_server_login_fields(self):
+        """
+        Show the server-specific login fields for admin mode.
+        """
         self.host_label.grid()
         self.host_textbox.grid()
         self.port_label.grid()
@@ -77,6 +88,9 @@ class LoginScreen:
 
     # Hide the server login fields
     def hide_server_login_fields(self):
+        """
+        Hide the server-specific login fields when in user mode.
+        """
         self.host_label.grid_remove()
         self.host_textbox.grid_remove()
         self.port_label.grid_remove()
@@ -86,8 +100,12 @@ class LoginScreen:
         self.password_label.grid_remove()
         self.password_textbox.grid_remove()
 
+
     # Validate the login credentials
     def login(self):
+        """
+        Handle the login process based on the selected mode.
+        """
         mode = self.mode_var.get()
 
         if mode == "admin":
@@ -97,6 +115,9 @@ class LoginScreen:
 
     # Show the main window for admin mode
     def show_admin_main_window(self):
+        """
+        Attempt to login with the provided credentials in admin mode.
+        """
         host = self.host_textbox.get()
         port = self.port_textbox.get()
         username = self.username_textbox.get()
@@ -106,11 +127,17 @@ class LoginScreen:
             messagebox.showerror("Error", "Please fill in all fields.")
             return
 
+        # Attempt to establish a connection to the MySQL database
+
         self.root.withdraw()
         self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)
 
+
     # Auto-login for user mode
     def auto_login(self):
+        """
+        Automatically log in with default credentials in user mode.
+        """
         # Set default user credentials
         default_host = 'ix-dev.cs.uoregon.edu'
         default_port = 3056  # Change this to your desired default user port
@@ -120,13 +147,33 @@ class LoginScreen:
         self.show_home_screen(default_host, default_port, default_username, default_password)
 
     def show_home_screen(self, host, port, username, password):
-        """Show the home screen."""
+        """
+        Show the home screen.
+
+        Parameters:
+            host (str): The database host.
+            port (int): The port number.
+            username (str): The database username.
+            password (str): The database password.
+        """
         self.root.withdraw()
         self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)
 
 
+
 class HomeScreen:
     def __init__(self, userid, login_root, host, port, username, password):
+        """
+        Initialize the HomeScreen instance.
+
+        Parameters:
+            userid (str): The user ID.
+            login_root: The root window of the login screen.
+            host (str): The database host.
+            port (int): The port number.
+            username (str): The database username.
+            password (str): The database password.
+        """
         self.login_root = login_root
         self.root = tk.Toplevel(login_root)
         self.root.minsize(800, 600)
@@ -143,6 +190,15 @@ class HomeScreen:
             password=password,
             database='ara_db'
         )
+
+        if not self.db_manager.is_valid_credentials():
+            # If credentials are invalid, display an error message and destroy the current window
+            messagebox.showerror("Error", "Invalid server credentials.")
+            self.root.destroy()
+            # Show the login screen again
+            self.login_root.deiconify()
+            return
+
         if self.db_manager.is_pdf_table_empty():
             self.db_manager.build_pdf_table()
         self.db_manager.update_pdf_locations()
@@ -176,11 +232,17 @@ class HomeScreen:
         self.prompt_label.pack(side="top", padx=10, pady=5)
 
     def display_survey_prompt(self):
+        """
+        Display a survey prompt.
+        """
         messagebox.showinfo("Survey Prompt",
                             "SURVEY: Glance over the headings in the chapter to see the few big points.")
     # Populate the notes menu with notes connected to the selected PDF
 
     def toggle_prompts(self):
+        """
+        Toggle the display of prompts.
+        """
         if self.prompt_visibility_var.get():
             self.show_prompts()
         else:
@@ -188,14 +250,25 @@ class HomeScreen:
 
     # Show prompts
     def show_prompts(self):
+        """
+        Show prompts.
+        """
         self.prompt_frame.pack()
 
     # Hide prompts
     def hide_prompts(self):
+        """
+        Hide prompts.
+        """
         self.prompt_frame.pack_forget()
 
-
     def select_pdf(self, selected_pdf):
+        """
+        Populate the notes menu with notes connected to the selected PDF.
+
+        Parameters:
+            selected_pdf (str): The selected PDF.
+        """
         pdf_name = os.path.basename(selected_pdf)
         pdf_id = self.db_manager.get_pdf_id(pdf_name)
         notes = self.db_manager.get_notes(pdf_id)
@@ -206,12 +279,22 @@ class HomeScreen:
 
     # Navigate back to the login screen
     def back_to_login(self):
+        """
+        Navigate back to the login screen.
+        """
         self.root.destroy()
         self.login_root.deiconify()
 
 
     # Open a PDF viewer window
     def open_pdf_viewer(self, original_pdf_location, highlighted_pdf_location=None):
+        """
+        Open a PDF viewer window.
+
+        Parameters:
+            original_pdf_location (str): The original PDF location.
+            highlighted_pdf_location (str, optional): The highlighted PDF location.
+        """
         if hasattr(self, 'viewer'):
             self.viewer.destroy()
 
@@ -349,6 +432,9 @@ class HomeScreen:
 
     # Toggle the display of notes
     def toggle_notes(self):
+        """
+        Toggle the display of notes.
+        """
         if self.show_notes_flag:
             self.hide_notes()
             self.show_hide_notes_button.config(text="Show Notes")
@@ -363,14 +449,28 @@ class HomeScreen:
 
     # Hide the notes
     def hide_notes(self):
+        """
+        Hide the notes.
+        """
         self.notes_text.pack_forget()
 
     # Show the notes
     def show_notes(self):
+        """
+        Show the notes.
+        """
         self.notes_text.pack()
 
     # Add a note to the database
     def add_note_to_db(self, pdf_id, note_name, notes_text):
+        """
+        Add a note to the database.
+
+        Parameters:
+            pdf_id (int): The ID of the PDF.
+            note_name (str): The name of the note.
+            notes_text: The text content of the note.
+        """
         note_text = notes_text.get("1.0", tk.END).strip()
         if note_text:
             self.db_manager.add_note(pdf_id, note_name, note_text)
@@ -381,6 +481,12 @@ class HomeScreen:
 
     # Delete the selected note from the database
     def delete_note_from_db(self, pdf_id):
+        """
+        Delete the selected note from the database.
+
+        Parameters:
+            pdf_id (int): The ID of the PDF.
+        """
         note_name = self.notes_menu_var.get()  # Get the selected note's name
         if note_name == "Select Note":
             messagebox.showwarning("Select Note", "Please select a note to delete.")
@@ -399,6 +505,12 @@ class HomeScreen:
 
     # Refresh the dropdown menu with the latest notes from the database
     def refresh_notes(self, pdf_id):
+        """
+        Refresh the dropdown menu with the latest notes from the database.
+
+        Parameters:
+            pdf_id (int): The ID of the PDF.
+        """
         notes = self.db_manager.get_notes(pdf_id)
         menu = self.notes_menu['menu']
         menu.delete(0, 'end')  # Clear previous notes
@@ -408,6 +520,12 @@ class HomeScreen:
 
     # Show the highlighted PDF if available
     def show_highlighted_pdf(self, pdf_name):
+        """
+        Show the highlighted PDF if available.
+
+        Parameters:
+            pdf_name (str): The name of the PDF.
+        """
         highlighted_folder = "highlighted"
         highlighted_filename = os.path.join(highlighted_folder, pdf_name)
         if os.path.exists(highlighted_filename):
@@ -423,6 +541,9 @@ class HomeScreen:
 
     # Hide the highlighted PDF
     def hide_highlighted_pdf(self):
+        """
+        Hide the highlighted PDF.
+        """
         if hasattr(self, 'highlighted_viewer'):
             self.highlighted_viewer.destroy()
             self.show_highlighted_button.config(text="Show Highlighted", command=lambda: self.show_highlighted_pdf(
@@ -432,11 +553,20 @@ class HomeScreen:
 
     # Handle closing the window
     def on_closing(self):
+        """
+        Handle closing the window.
+        """
         self.root.destroy()
         sys.exit()
 
     # Load the note associated with the PDF
     def load_note(self, pdf_id):
+        """
+        Load the note associated with the PDF.
+
+        Parameters:
+            pdf_id (int): The ID of the PDF.
+        """
         # Fetch and display the note associated with the PDF from the database
         note_text = self.db_manager.display_note(pdf_id)
         self.notes_text.delete("1.0", tk.END)
@@ -444,6 +574,12 @@ class HomeScreen:
 
     # Load the selected note
     def load_selected_note(self, pdf_id):
+        """
+        Load the selected note.
+
+        Parameters:
+            pdf_id (int): The ID of the PDF.
+        """
         selected_note = self.notes_menu_var.get()  # Get the selected note from the dropdown menu
         if selected_note != "Select Note":
             note_name = selected_note  # Assign the selected note name to a variable
@@ -461,6 +597,9 @@ class HomeScreen:
             messagebox.showwarning("Note Not Selected", "Please select a note to load.")
 
     def add_chapter(self):
+        """
+        Add a chapter to the notes.
+        """
         if hasattr(self, 'viewer'):
             chapter_title = self.chapter_title_entry.get()
             if chapter_title:
@@ -478,6 +617,9 @@ class HomeScreen:
             messagebox.showwarning("PDF Viewer Not Active", "Please open a PDF viewer to add a chapter.")
 
     def add_section(self):
+        """
+        Add a section to the notes.
+        """
         if hasattr(self, 'viewer'):
             section_heading = self.section_heading_entry.get()
             if section_heading:
@@ -491,6 +633,9 @@ class HomeScreen:
             messagebox.showwarning("PDF Viewer Not Active", "Please open a PDF viewer to add a section.")
 
     def toggle_prompts(self):
+        """
+        Toggle the display of prompts based on the checkbox state.
+        """
         if self.prompt_visibility_var.get():
             self.show_prompts()
             self.display_random_survey_prompt()  # Display a random prompt when the checkbox is checked
@@ -499,14 +644,23 @@ class HomeScreen:
 
     # Show prompts
     def show_prompts(self):
+        """
+        Show prompts.
+        """
         self.prompt_frame.pack()
 
     # Hide prompts
     def hide_prompts(self):
+        """
+        Hide prompts.
+        """
         self.prompt_frame.pack_forget()
 
     # Display prompts for each step of SQ3R
     def display_random_survey_prompt(self):
+        """
+        Display a random prompt related to the SQ3R study method.
+        """
         prompts = [
             "SQ3R: Survey - Quickly scan chapter headings and summary paragraph to grasp main ideas.",
             "SQ3R: Question - Formulate questions from headings to focus reading and aid comprehension.",
