@@ -3,9 +3,16 @@ import os
 
 class DatabaseManager:
     def __init__(self, host=None, port=None, user=None, password=None, database=None):
-        # Initializing the DatabaseManager class with optional parameters for database credentials
-        # If not provided, attempt to load from environment variables
-        # If still not available, raise a ValueError
+        """
+        Initializes the DatabaseManager class with optional parameters for database credentials.
+
+        Args:
+            host (str): The hostname of the MySQL server.
+            port (int): The port number of the MySQL server.
+            user (str): The username for authentication.
+            password (str): The password for authentication.
+            database (str): The name of the database to connect to.
+        """
         if host is None or port is None or user is None or password is None or database is None:
             host = os.getenv('DB_HOST')
             port = os.getenv('DB_PORT')
@@ -26,7 +33,12 @@ class DatabaseManager:
         self.connection = self.connect_to_database()
 
     def connect_to_database(self):
-        # Method to establish a connection to the MySQL database
+        """
+        Establishes a connection to the MySQL database.
+
+        Returns:
+            mysql.connector.connection.MySQLConnection or None: The database connection if successful, else None.
+        """
         try:
             connection = mysql.connector.connect(
                 host=self.host,
@@ -43,7 +55,7 @@ class DatabaseManager:
 
     def is_valid_credentials(self):
         """
-        Check if the provided MySQL server credentials are valid.
+        Checks if the provided MySQL server credentials are valid.
 
         Returns:
             bool: True if the credentials are valid, False otherwise.
@@ -51,8 +63,9 @@ class DatabaseManager:
         return self.connection is not None
 
     def build_pdf_table(self):
-        # Method to populate the PDF table in the database with PDF file locations
-        # Retrieves PDF file names from a directory, constructs file paths, and inserts into the database
+        """
+        Populates the PDF table in the database with PDF file locations.
+        """
         pdf_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "pdfs")
         highlighted_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "highlighted")
 
@@ -84,8 +97,9 @@ class DatabaseManager:
             print("No database connection.")
 
     def update_pdf_locations(self):
-        # Method to update PDF file locations in the database
-        # Retrieves current PDF locations, constructs updated paths, and updates database entries
+        """
+        Updates PDF file locations in the database.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -113,6 +127,9 @@ class DatabaseManager:
                 cursor.close()
 
     def delete_pdf_entries(self):
+        """
+        Deletes all entries in the PDF table from the database.
+        """
         # Method to delete all entries in the PDF table from the database
         if self.connection:
             try:
@@ -128,7 +145,15 @@ class DatabaseManager:
                 cursor.close()
 
     def get_pdf_id(self, pdf_name):
-        # Method to retrieve the ID of a PDF from the database based on its name
+        """
+        Retrieves the ID of a PDF from the database based on its name.
+
+        Args:
+            pdf_name (str): The name of the PDF file.
+
+        Returns:
+            int or None: The ID of the PDF if found, else None.
+        """
         select_data = (pdf_name,) #Get the data aka the name 
         if self.connection:
             try:
@@ -152,7 +177,12 @@ class DatabaseManager:
             return None
 
     def get_pdf_locations(self):
-        # Method to retrieve all PDF locations from the database
+        """
+        Retrieves all PDF locations from the database.
+
+        Returns:
+            list of str: List of PDF file locations.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -173,7 +203,12 @@ class DatabaseManager:
                 cursor.close()
 
     def get_highlighted_pdfs(self):
-        # Method to retrieve all highlighted PDF locations from the database
+        """
+        Retrieves all highlighted PDF locations from the database.
+
+        Returns:
+            list of str: List of highlighted PDF file locations.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -194,8 +229,12 @@ class DatabaseManager:
                 cursor.close()
 
     def is_pdf_table_empty(self):
-        # Method to check if the PDF table in the database is empty
-        #I orginally had this to check the table for debugging but not sure if it is needed still.
+        """
+        Checks if the PDF table in the database is empty.
+
+        Returns:
+            bool: True if the PDF table is empty, False otherwise.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -211,7 +250,14 @@ class DatabaseManager:
                 cursor.close()
 
     def add_note(self, pdf_id, note_name, note_text):
-        # Method to add a note to the database for a given PDF
+        """
+        Adds a note to the database for a given PDF.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+            note_name (str): The name of the note.
+            note_text (str): The text of the note.
+        """
         if self.connection:
             try:
                 cursor = self.connection.cursor()
@@ -237,7 +283,12 @@ class DatabaseManager:
             print("No database connection.")
 
     def delete_note(self, note_id):
-        """Delete a note from the database using its ID."""
+        """
+        Deletes a note from the database using its ID.
+
+        Args:
+            note_id (int): The ID of the note to delete.
+        """
         if self.connection:
             try:
                 cursor = self.connection.cursor()
@@ -256,6 +307,13 @@ class DatabaseManager:
             print("No database connection.")
 
     def update_note(self, note_id, new_note_text):
+        """
+        Updates the text of a note in the database.
+
+        Args:
+            note_id (int): The ID of the note to update.
+            new_note_text (str): The new text of the note.
+        """
         if self.connection:
             try:
                 cursor = self.connection.cursor()
@@ -271,6 +329,16 @@ class DatabaseManager:
                 cursor.close()
 
     def display_note(self, pdf_id):
+        """
+        Displays the note text given the PDF ID.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+
+        Returns:
+            str or None: The text of the note if found, else None.
+        """
+
         #This function is just to display the note text given the note id
         #note id is linked to pdf id
         try:
@@ -295,6 +363,16 @@ class DatabaseManager:
                 cursor.close()
 
     def note_exists(self, pdf_id, note_text):
+        """
+        Checks if a note exists for a given PDF.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+            note_text (str): The text of the note.
+
+        Returns:
+            bool: True if the note exists, False otherwise.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -315,6 +393,16 @@ class DatabaseManager:
                 cursor.close()
 
     def get_saved_notes(self, pdf_id):
+        """
+        Retrieves saved note names for a given PDF.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+
+        Returns:
+            list of str: List of saved note names.
+        """
+
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -335,7 +423,15 @@ class DatabaseManager:
                 cursor.close()
 
     def get_notes(self, pdf_id):
-        """Retrieve notes associated with the given PDF ID."""
+        """
+        Retrieves notes associated with the given PDF ID.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+
+        Returns:
+            list of str: List of note names.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -358,7 +454,16 @@ class DatabaseManager:
                 cursor.close()
 
     def get_note_text(self, pdf_id, note_name):
-        """Retrieve the text of a specific note associated with a PDF."""
+        """
+        Retrieves the text of a specific note associated with a PDF.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+            note_name (str): The name of the note.
+
+        Returns:
+            str or None: The text of the note if found, else None.
+        """
         try:
             if self.connection:
                 cursor = self.connection.cursor()
@@ -381,7 +486,16 @@ class DatabaseManager:
                 cursor.close()
 
     def get_note_id(self, pdf_id, note_name):
-        """Retrieve the ID of a specific note associated with a PDF based on the note name."""
+        """
+        Retrieves the ID of a specific note associated with a PDF based on the note name.
+
+        Args:
+            pdf_id (int): The ID of the PDF.
+            note_name (str): The name of the note.
+
+        Returns:
+            int or None: The ID of the note if found, else None.
+        """
         if self.connection:
             try:
                 cursor = self.connection.cursor()
