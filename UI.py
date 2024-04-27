@@ -142,7 +142,8 @@ class HomeScreen:
             password=password,
             database='ara_db'
         )
-        #self.db_manager.build_pdf_table()
+        if self.db_manager.is_pdf_table_empty():
+            self.db_manager.build_pdf_table()
         self.db_manager.update_pdf_locations()
         pdf_locations = self.db_manager.get_pdf_locations()
 
