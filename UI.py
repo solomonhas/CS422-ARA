@@ -7,7 +7,7 @@ import tkinter.messagebox as messagebox
 import os
 import mysql.connector
 
-
+#
 class LoginScreen:
     def __init__(self, root):
         """Initialize the LoginScreen class."""
@@ -142,6 +142,7 @@ class HomeScreen:
             password=password,
             database='ara_db'
         )
+        #self.db_manager.build_pdf_table()
         self.db_manager.update_pdf_locations()
         pdf_locations = self.db_manager.get_pdf_locations()
 

@@ -1,6 +1,6 @@
 import mysql.connector
 import os
-#
+
 class DatabaseManager:
     def __init__(self, host=None, port=None, user=None, password=None, database=None):
         # Initializing the DatabaseManager class with optional parameters for database credentials
@@ -47,15 +47,18 @@ class DatabaseManager:
         pdf_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "pdfs")
         highlighted_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "highlighted")
 
-        highlighted_names = [filename for filename in os.listdir(highlighted_directory) if filename != "dummy"]
+        pdf_names = [filename for filename in os.listdir(pdf_directory) if filename != "Chapter"]
+        pdf_names.sort()
+
+        highlighted_names = [filename for filename in os.listdir(highlighted_directory) if filename != "Chapter"]
         highlighted_names.sort()
 
         if self.connection:
             try:
                 cursor = self.connection.cursor()
-                for i, pdf_name in enumerate(highlighted_names):
+                for pdf_name, highlighted_name in zip(pdf_names, highlighted_names):
                     pdf_location = os.path.join(pdf_directory, pdf_name)
-                    highlighted_location = os.path.join(highlighted_directory, pdf_name)
+                    highlighted_location = os.path.join(highlighted_directory, highlighted_name)
 
                     insert_query = "INSERT INTO pdf_table (pdf_name, pdf_location, highlighted_pdf_location) VALUES (%s, %s, %s)"
                     insert_data = (pdf_name, pdf_location, highlighted_location)
@@ -80,10 +83,10 @@ class DatabaseManager:
                 pdf_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "pdfs")
                 highlighted_directory = os.path.join(os.path.dirname(os.path.realpath(__file__)), "highlighted")
 
-                highlighted_names = [filename for filename in os.listdir(highlighted_directory) if filename != "dummy"]
-                highlighted_names.sort()
+                pdf_names = [filename for filename in os.listdir(pdf_directory) if filename != "Chapter"]
+                pdf_names.sort()
 
-                for pdf_name in highlighted_names:
+                for pdf_name in pdf_names:
                     pdf_location = os.path.join(pdf_directory, pdf_name)
                     highlighted_location = os.path.join(highlighted_directory, pdf_name)
 
