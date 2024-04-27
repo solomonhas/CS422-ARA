@@ -7,7 +7,7 @@ import tkinter.messagebox as messagebox
 import os
 import random
 
-#
+
 class LoginScreen:
     def __init__(self, root):
         """
@@ -16,67 +16,71 @@ class LoginScreen:
         Parameters:
             root (tk.Tk): The main window for the application.
         """
+        # Set up the root window
         self.root = root
-        self.root.minsize(400, 300)
-        self.root.title("group 6 ara")
+        self.root.minsize(400, 300)  # Set minimum size for the window
+        self.root.title("group 6 ara")  # Set window title
 
+        # Create and arrange the widgets within the login window
         self.create_widgets()
-
 
     # Create the widgets for the login screen
     def create_widgets(self):
         """
         Create and arrange the widgets within the login window.
         """
+        # Create a frame for the login widgets
         self.login_frame = tk.Frame(self.root)
-        self.login_frame.pack(padx=10, pady=10)
+        self.login_frame.pack(padx=10, pady=10)  # Add padding to the frame
 
-        # Select mode
-        self.mode_label = tk.Label(self.login_frame, text="Select mode:")
-        self.mode_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
-        self.mode_var = tk.StringVar(self.login_frame, value="user")
+        # Select mode label and radio buttons
+        self.mode_label = tk.Label(self.login_frame, text="Select mode:")  # Label for mode selection
+        self.mode_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")  # Grid placement for label
+        self.mode_var = tk.StringVar(self.login_frame, value="user")  # Variable to store mode selection
         self.mode_user_radio = tk.Radiobutton(self.login_frame, text="User", variable=self.mode_var, value="user",
-                                              command=self.hide_server_login_fields)
-        self.mode_user_radio.grid(row=0, column=1, padx=5, pady=5)  # Changed column to 1
+                                              command=self.hide_server_login_fields)  # Radio button for user mode
+        self.mode_user_radio.grid(row=0, column=1, padx=5, pady=5)  # Grid placement for user radio button
         self.mode_admin_radio = tk.Radiobutton(self.login_frame, text="Admin", variable=self.mode_var, value="admin",
-                                               command=self.show_server_login_fields)
-        self.mode_admin_radio.grid(row=0, column=2, padx=5, pady=5)  # Changed column to 2
+                                               command=self.show_server_login_fields)  # Radio button for admin mode
+        self.mode_admin_radio.grid(row=0, column=2, padx=5, pady=5)  # Grid placement for admin radio button
 
         # Server login fields
-        self.host_label = Label(self.login_frame, text="host:")
-        self.host_textbox = Entry(self.login_frame)
-        self.host_label.grid(row=1, column=0, padx=10, pady=5, sticky="e")
-        self.host_textbox.insert(0, 'ix-dev.cs.uoregon.edu')
-        self.host_textbox.grid(row=1, column=1, padx=10, pady=5)
+        self.host_label = Label(self.login_frame, text="host:")  # Label for host input
+        self.host_textbox = Entry(self.login_frame)  # Textbox for host input
+        self.host_label.grid(row=1, column=0, padx=10, pady=5, sticky="e")  # Grid placement for host label
+        self.host_textbox.insert(0, 'ix-dev.cs.uoregon.edu')  # Default value for host textbox
+        self.host_textbox.grid(row=1, column=1, padx=10, pady=5)  # Grid placement for host textbox
 
-        self.port_label = Label(self.login_frame, text="port:")
-        self.port_textbox = Entry(self.login_frame)
-        self.port_label.grid(row=2, column=0, padx=10, pady=5, sticky="e")
-        self.port_textbox.insert(0, '3056')
-        self.port_textbox.grid(row=2, column=1, padx=10, pady=5)
+        self.port_label = Label(self.login_frame, text="port:")  # Label for port input
+        self.port_textbox = Entry(self.login_frame)  # Textbox for port input
+        self.port_label.grid(row=2, column=0, padx=10, pady=5, sticky="e")  # Grid placement for port label
+        self.port_textbox.insert(0, '3056')  # Default value for port textbox
+        self.port_textbox.grid(row=2, column=1, padx=10, pady=5)  # Grid placement for port textbox
 
-        self.username_label = Label(self.login_frame, text="username:")
-        self.username_textbox = Entry(self.login_frame)
-        self.username_label.grid(row=3, column=0, padx=10, pady=5, sticky="e")
-        self.username_textbox.insert(0, 'group6')
-        self.username_textbox.grid(row=3, column=1, padx=10, pady=5)
+        self.username_label = Label(self.login_frame, text="username:")  # Label for username input
+        self.username_textbox = Entry(self.login_frame)  # Textbox for username input
+        self.username_label.grid(row=3, column=0, padx=10, pady=5, sticky="e")  # Grid placement for username label
+        self.username_textbox.insert(0, 'group6')  # Default value for username textbox
+        self.username_textbox.grid(row=3, column=1, padx=10, pady=5)  # Grid placement for username textbox
 
-        self.password_label = Label(self.login_frame, text="password:")
-        self.password_textbox = Entry(self.login_frame, show="*")
-        self.password_label.grid(row=4, column=0, padx=10, pady=5, sticky="e")
-        self.password_textbox.insert(0, 'group6')
-        self.password_textbox.grid(row=4, column=1, padx=10, pady=5)
+        self.password_label = Label(self.login_frame, text="password:")  # Label for password input
+        self.password_textbox = Entry(self.login_frame, show="*")  # Textbox for password input (password is hidden)
+        self.password_label.grid(row=4, column=0, padx=10, pady=5, sticky="e")  # Grid placement for password label
+        self.password_textbox.insert(0, 'group6')  # Default value for password textbox
+        self.password_textbox.grid(row=4, column=1, padx=10, pady=5)  # Grid placement for password textbox
 
-        self.login_button = Button(self.login_frame, text="Login", command=self.login)
-        self.login_button.grid(row=5, columnspan=2, pady=10)
+        self.login_button = Button(self.login_frame, text="Login", command=self.login)  # Button to trigger login
+        self.login_button.grid(row=5, columnspan=2, pady=10)  # Grid placement for login button
 
-        self.hide_server_login_fields()  # Initially hide the server login fields
+        # Initially hide the server login fields
+        self.hide_server_login_fields()  # Hide server login fields by default
 
     # Show the server login fields
     def show_server_login_fields(self):
         """
         Show the server-specific login fields for admin mode.
         """
+        # Grid placement for server login fields to show them
         self.host_label.grid()
         self.host_textbox.grid()
         self.port_label.grid()
@@ -91,6 +95,7 @@ class LoginScreen:
         """
         Hide the server-specific login fields when in user mode.
         """
+        # Grid removal for server login fields to hide them
         self.host_label.grid_remove()
         self.host_textbox.grid_remove()
         self.port_label.grid_remove()
@@ -100,38 +105,45 @@ class LoginScreen:
         self.password_label.grid_remove()
         self.password_textbox.grid_remove()
 
-
     # Validate the login credentials
     def login(self):
         """
         Handle the login process based on the selected mode.
         """
-        mode = self.mode_var.get()
+        mode = self.mode_var.get()  # Get the selected mode
 
         if mode == "admin":
-            self.show_admin_main_window()
+            self.show_admin_main_window()  # Show admin main window if admin mode is selected
         else:  # User mode
-            self.auto_login()
+            self.auto_login()  # Perform auto-login for user mode
 
     # Show the main window for admin mode
     def show_admin_main_window(self):
         """
         Attempt to login with the provided credentials in admin mode.
         """
+        # Retrieve login credentials
         host = self.host_textbox.get()
-        port = self.port_textbox.get()
+        port_str  = self.port_textbox.get()
         username = self.username_textbox.get()
         password = self.password_textbox.get()
 
+        try:
+            port = int(port_str)
+        except ValueError:
+            # If port_str cannot be converted to an integer, show an error message
+            messagebox.showerror("Error", "Invalid port number. Please enter a valid integer.")
+            return
+
         if not all([host, port, username, password]):
+            # Display error message if any field is empty
             messagebox.showerror("Error", "Please fill in all fields.")
             return
 
         # Attempt to establish a connection to the MySQL database
 
-        self.root.withdraw()
-        self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)
-
+        self.root.withdraw()  # Hide the login window
+        self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)  # Show home screen
 
     # Auto-login for user mode
     def auto_login(self):
@@ -144,6 +156,7 @@ class LoginScreen:
         default_username = 'group6'
         default_password = 'group6'
 
+        # Show home screen with default credentials
         self.show_home_screen(default_host, default_port, default_username, default_password)
 
     def show_home_screen(self, host, port, username, password):
@@ -156,7 +169,8 @@ class LoginScreen:
             username (str): The database username.
             password (str): The database password.
         """
-        self.root.withdraw()
+        self.root.withdraw()  # Hide the login window
+        # Show the home screen with the provided credentials
         self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)
 
 
