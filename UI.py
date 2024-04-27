@@ -6,6 +6,7 @@ import sys
 import tkinter.messagebox as messagebox
 import os
 import mysql.connector
+import random
 
 #
 class LoginScreen:
@@ -147,6 +148,8 @@ class HomeScreen:
         self.db_manager.update_pdf_locations()
         pdf_locations = self.db_manager.get_pdf_locations()
 
+
+
         # Create buttons for each PDF location
         for i, pdf_location in enumerate(pdf_locations):
             pdf_button = Button(self.root, text=f"pdf {i + 1}", height=1, width=1, padx=50, pady=30,
@@ -158,7 +161,40 @@ class HomeScreen:
         back_button.pack(pady=30)
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
+        self.prompt_frame = tk.Frame(self.root)
+        self.prompt_frame.pack(side="top", fill="x", padx=10, pady=10)
+
+        # Add a checkbox to toggle prompt visibility
+        self.prompt_visibility_var = tk.BooleanVar(value=True)
+        self.prompt_visibility_checkbox = tk.Checkbutton(self.root, text="Show Prompts",
+                                                         variable=self.prompt_visibility_var,
+                                                         command=self.toggle_prompts)
+        self.prompt_visibility_checkbox.pack(side="top", padx=10, pady=10)
+
+        # Add a label to display prompts
+        self.prompt_label = tk.Label(self.prompt_frame, text="", font=("Arial", 12, "bold"))
+        self.prompt_label.pack(side="top", padx=10, pady=5)
+
+    def display_survey_prompt(self):
+        messagebox.showinfo("Survey Prompt",
+                            "SURVEY: Glance over the headings in the chapter to see the few big points.")
     # Populate the notes menu with notes connected to the selected PDF
+
+    def toggle_prompts(self):
+        if self.prompt_visibility_var.get():
+            self.show_prompts()
+        else:
+            self.hide_prompts()
+
+    # Show prompts
+    def show_prompts(self):
+        self.prompt_frame.pack()
+
+    # Hide prompts
+    def hide_prompts(self):
+        self.prompt_frame.pack_forget()
+
+
     def select_pdf(self, selected_pdf):
         pdf_name = os.path.basename(selected_pdf)
         pdf_id = self.db_manager.get_pdf_id(pdf_name)
@@ -454,7 +490,36 @@ class HomeScreen:
         else:
             messagebox.showwarning("PDF Viewer Not Active", "Please open a PDF viewer to add a section.")
 
+    def toggle_prompts(self):
+        if self.prompt_visibility_var.get():
+            self.show_prompts()
+            self.display_random_survey_prompt()  # Display a random prompt when the checkbox is checked
+        else:
+            self.hide_prompts()
+
+    # Show prompts
+    def show_prompts(self):
+        self.prompt_frame.pack()
+
+    # Hide prompts
+    def hide_prompts(self):
+        self.prompt_frame.pack_forget()
+
+    # Display prompts for each step of SQ3R
+    def display_random_survey_prompt(self):
+        prompts = [
+            "SQ3R: Survey - Quickly scan chapter headings and summary paragraph to grasp main ideas.",
+            "SQ3R: Question - Formulate questions from headings to focus reading and aid comprehension.",
+            "SQ3R: Read - Actively search for answers while reading each section.",
+            "SQ3R: Recite - Summarize section content in your own words to reinforce understanding.",
+            "SQ3R: Review - Review notes to understand relationships and test memory by recalling main points."
+        ]
+        random_prompt = random.choice(prompts)  # Select a random prompt from the list
+        self.prompt_label.config(text=random_prompt)
     # Main function to start the application
+
+
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.login_screen = LoginScreen(root)
