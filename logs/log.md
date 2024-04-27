@@ -79,3 +79,9 @@
   - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
   - Added to requirements.
   - Worked on the logic for pdf tables
+
+## Date: 4/25/2024
+**Logged by:** Solomon Haskell
+- **Activities:**
+  - Highlighted chapter 5 and added chapter 6 highlighed to the pdfs
+  - comments for some functions
