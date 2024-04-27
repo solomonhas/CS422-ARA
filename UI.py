@@ -165,8 +165,8 @@ class HomeScreen:
         self.prompt_frame.pack(side="top", fill="x", padx=10, pady=10)
 
         # Add a checkbox to toggle prompt visibility
-        self.prompt_visibility_var = tk.BooleanVar(value=True)
-        self.prompt_visibility_checkbox = tk.Checkbutton(self.root, text="Show Prompts",
+        self.prompt_visibility_var = tk.BooleanVar(value=False)
+        self.prompt_visibility_checkbox = tk.Checkbutton(self.root, text="Show a Prompt",
                                                          variable=self.prompt_visibility_var,
                                                          command=self.toggle_prompts)
         self.prompt_visibility_checkbox.pack(side="top", padx=10, pady=10)
