@@ -278,8 +278,6 @@ class HomeScreen:
         load_note_button = Button(self.top_frame, text="Load Note", command=lambda: self.load_selected_note(pdf_id))
         load_note_button.pack(side="left", padx=5)
 
-        back_button = Button(self.top_frame, text="Back", command=self.viewer.destroy)
-        back_button.pack(side="left", padx=5)
 
         # Create Show/Hide Highlighted button
         self.show_highlighted_button = Button(self.top_frame, text=self.show_highlighted_button_text,
@@ -307,6 +305,9 @@ class HomeScreen:
 
         self.chapter_title_entry = Entry(self.top_frame)
         self.chapter_title_entry.pack(side="left")  # Aligns to the left
+
+        back_button = Button(self.top_frame, text="Back", command=self.viewer.destroy)
+        back_button.pack(side="right", padx=5)
 
         self.viewer.attributes('-topmost', False)
 
