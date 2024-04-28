@@ -23,7 +23,7 @@ You would then navigate to the donwloaded location and find the CS422-ARA direct
 pip install -r requirements.txt
 ```
 
-# Setting up database
+### Setting up database
 After installing the requirements, you will have to set up a MySQL database, outlined in [here](https://github.com/solomonhas/CS422-ARA/blob/main/Server_Installation.md).
 
 
