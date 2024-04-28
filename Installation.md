@@ -12,7 +12,7 @@ From a terminal, the command would be:
 
 **`ssh username@ix.cs.uoregon.edu`**  
 
-(Replace `username` with your login name.)
+(Replace username with your login name.)
 
 ### STEP 2
 In your home directory, run the command:  
@@ -67,7 +67,7 @@ Next, grant the user privileges to the database by running:
 
 **`GRANT ALL PRIVILEGES ON ara_db.* TO 'username'@'%' WITH GRANT OPTION;`**  
 
-Replace `username` with the username you chose.  
+Replace username with the username you chose.  
 Finalize the grant by running:  
 
 **`FLUSH PRIVILEGES;`**  
