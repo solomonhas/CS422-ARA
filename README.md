@@ -24,7 +24,7 @@ pip install -r requirements.txt
 ```
 
 ### Setting up database
-After installing the requirements, you will have to set up a MySQL database, outlined in [here](https://github.com/solomonhas/CS422-ARA/blob/main/Server_Installation.md).
+After installing the requirements, you will have to set up a MySQL database, outlined in [Server_Installation.md](https://github.com/solomonhas/CS422-ARA/blob/main/Server_Installation.md).
 
 
 Once you have installed the requirements and set up a server. you can type to run the program.
