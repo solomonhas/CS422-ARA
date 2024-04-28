@@ -19,7 +19,7 @@ git clone https://github.com/solomonhas/CS422-ARA.git
 ```
 
 ### Installation Guide
-Please complete the steps found [here](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.txt).
+Please complete the steps found [here](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.md).
 
 ###
 Once you have installed the requirements and set up a server. you can type to run the program.
