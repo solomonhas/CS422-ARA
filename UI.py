@@ -7,7 +7,7 @@ import tkinter.messagebox as messagebox
 import os
 import random
 
-
+#
 class LoginScreen:
     def __init__(self, root):
         """
@@ -166,10 +166,10 @@ class LoginScreen:
         """
         # Set default user credentials
         default_host = 'ix-dev.cs.uoregon.edu'
-        default_port = 3056  # Change this to your desired default user port
+        default_port = 3056
         default_username = 'group6'
         default_password = 'group6'
-        default_db_name = 'ara_db'  # Add default database name
+        default_db_name = 'ara_db'
 
         # Show home screen with default credentials
         self.show_home_screen(default_host, default_port, default_username, default_password, default_db_name)
