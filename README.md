@@ -11,7 +11,7 @@ This project is an implimentation of a Active Reading Assistant. This is to help
 
 This Repository was made April 9th 2024 for CS 422 Software Methodologies at the University of Oregon. It was made to impliment an Active-Reading Assistant as our project 1.
 
-## Running
+## Installation/Running
 To run our application, you can either click the green code button and click the "Download ZIP" dropdown, or you can clone our code using:
 
 ```bash
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ### Setting up database
 After installing the requirements, you will have to set up a MySQL database, outlined in [Server_Installation.md](https://github.com/solomonhas/CS422-ARA/blob/main/Server_Installation.md).
 
-
+###
 Once you have installed the requirements and set up a server. you can type to run the program.
 ```bash
 python3 UI.py
