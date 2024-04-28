@@ -9,12 +9,16 @@
 ### STEP 1
 Log on to a Linux-enabled machine, such as the University of Oregon Computer Science department machine ix.  
 From a terminal, the command would be:  
+
 **`ssh username@ix.cs.uoregon.edu`**  
+
 (Replace `username` with your login name.)
 
 ### STEP 2
 In your home directory, run the command:  
+
 **`mysqlctl install`**  
+
 You will be prompted to enter a password. Remember this password as you will need it to run MySQL commands.
 
 ### STEP 3
