@@ -22,10 +22,10 @@ You would then navigate to the donwloaded location and find the CS422-ARA direct
 ```bash
 pip install -r requirements.txt
 ```
-After installing the requirements, you will have to set up a MySQL database, outlined in `[Server_Installation.md](Server_Installation.md)`
+After installing the requirements, you will have to set up a MySQL database, outlined in `[Server_Installation.md](CS422-ARA\Server_Installation.md)`
 
 
-Once you have installed the requirements, you can type to run the program.
+Once you have installed the requirements and set up a server. you can type to run the program.
 ```bash
 python3 UI.py
 ```
