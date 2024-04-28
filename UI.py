@@ -69,8 +69,15 @@ class LoginScreen:
         self.password_textbox.insert(0, 'group6')  # Default value for password textbox
         self.password_textbox.grid(row=4, column=1, padx=10, pady=5)  # Grid placement for password textbox
 
+        self.db_name_label = Label(self.login_frame, text="Database Name:")  # Label for database name input
+        self.db_name_textbox = Entry(self.login_frame)  # Textbox for database name input
+        self.db_name_label.grid(row=5, column=0, padx=10, pady=5, sticky="e")  # Grid placement for database name label
+        self.db_name_textbox.insert(0, 'ara_db')
+        self.db_name_textbox.grid(row=5, column=1, padx=10, pady=5)  # Grid placement for database name textbox
+
         self.login_button = Button(self.login_frame, text="Login", command=self.login)  # Button to trigger login
-        self.login_button.grid(row=5, columnspan=2, pady=10)  # Grid placement for login button
+        self.login_button.grid(row=8, columnspan=2, pady=10)  # Grid placement for login button
+
 
         # Initially hide the server login fields
         self.hide_server_login_fields()  # Hide server login fields by default
@@ -89,6 +96,9 @@ class LoginScreen:
         self.username_textbox.grid()
         self.password_label.grid()
         self.password_textbox.grid()
+        self.db_name_label.grid()
+        self.db_name_textbox.grid()
+
 
     # Hide the server login fields
     def hide_server_login_fields(self):
@@ -104,6 +114,8 @@ class LoginScreen:
         self.username_textbox.grid_remove()
         self.password_label.grid_remove()
         self.password_textbox.grid_remove()
+        self.db_name_label.grid_remove()
+        self.db_name_textbox.grid_remove()
 
     # Validate the login credentials
     def login(self):
@@ -124,9 +136,10 @@ class LoginScreen:
         """
         # Retrieve login credentials
         host = self.host_textbox.get()
-        port_str  = self.port_textbox.get()
+        port_str = self.port_textbox.get()
         username = self.username_textbox.get()
         password = self.password_textbox.get()
+        db_name = self.db_name_textbox.get()  # Get the database name
 
         try:
             port = int(port_str)
@@ -135,7 +148,7 @@ class LoginScreen:
             messagebox.showerror("Error", "Invalid port number. Please enter a valid integer.")
             return
 
-        if not all([host, port, username, password]):
+        if not all([host, port, username, password, db_name]):
             # Display error message if any field is empty
             messagebox.showerror("Error", "Please fill in all fields.")
             return
@@ -143,7 +156,8 @@ class LoginScreen:
         # Attempt to establish a connection to the MySQL database
 
         self.root.withdraw()  # Hide the login window
-        self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)  # Show home screen
+        self.main_window = HomeScreen("blank_user", self.root, host, port, username, password,
+                                      db_name)  # Pass the database name to HomeScreen
 
     # Auto-login for user mode
     def auto_login(self):
@@ -155,11 +169,12 @@ class LoginScreen:
         default_port = 3056  # Change this to your desired default user port
         default_username = 'group6'
         default_password = 'group6'
+        default_db_name = 'ara_db'  # Add default database name
 
         # Show home screen with default credentials
-        self.show_home_screen(default_host, default_port, default_username, default_password)
+        self.show_home_screen(default_host, default_port, default_username, default_password, default_db_name)
 
-    def show_home_screen(self, host, port, username, password):
+    def show_home_screen(self, host, port, username, password, db_name):
         """
         Show the home screen.
 
@@ -168,15 +183,16 @@ class LoginScreen:
             port (int): The port number.
             username (str): The database username.
             password (str): The database password.
+            db_name (str): The database name.
         """
         self.root.withdraw()  # Hide the login window
         # Show the home screen with the provided credentials
-        self.main_window = HomeScreen("blank_user", self.root, host, port, username, password)
+        self.main_window = HomeScreen("blank_user", self.root, host, port, username, password, db_name)
 
 
 
 class HomeScreen:
-    def __init__(self, userid, login_root, host, port, username, password):
+    def __init__(self, userid, login_root, host, port, username, password, db_name):
         """
         Initialize the HomeScreen instance.
 
@@ -187,6 +203,7 @@ class HomeScreen:
             port (int): The port number.
             username (str): The database username.
             password (str): The database password.
+            db_name (str): The database name.
         """
         self.login_root = login_root
         self.root = tk.Toplevel(login_root)
@@ -202,7 +219,7 @@ class HomeScreen:
             port=int(port),
             user=username,
             password=password,
-            database='ara_db'
+            database=db_name
         )
 
         if not self.db_manager.is_valid_credentials():
@@ -217,8 +234,6 @@ class HomeScreen:
             self.db_manager.build_pdf_table()
         self.db_manager.update_pdf_locations()
         pdf_locations = self.db_manager.get_pdf_locations()
-
-
 
         # Create buttons for each PDF location
         for i, pdf_location in enumerate(pdf_locations):
