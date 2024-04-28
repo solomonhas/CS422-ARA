@@ -9,7 +9,7 @@ This project is an implimentation of a Active Reading Assistant. This is to help
 - Areyan Rastawan
 - Jerin Spencer
 
-This Repository was made April 9th 2024 for CS 422 Software Methodologies at the University of Oregon. It was made to impliment an Active-Reading Assistant as our groups project 1.
+This Repository was made April 9th 2024 for CS 422 Software Methodologies at the University of Oregon. It was made to impliment an Active-Reading Assistant as our project 1.
 
 ## Running
 To run our application, you can either click the green code button and click the "Download ZIP" dropdown, or you can clone our code using:
@@ -18,18 +18,18 @@ To run our application, you can either click the green code button and click the
 git clone https://github.com/solomonhas/CS422-ARA.git
 ```
 
-you would then navigate to the donwloaded location and in the CS422-ARA directory type
+You would then navigate to the donwloaded location and find the CS422-ARA directory, type
 ```bash
 pip install -r Installation.md
 ```
 
-Once you have installed the requirements, you can type 
+Once you have installed the requirements, you can type to run the program.
 ```bash
 python3 UI.py
 ```
 
 ## Software Dependencies
-This code runs on 3.12, and only requires to install mysql-connector-python, there are a few imports used mainly as an aid for PDF viewing within Tkinter as well as directory lookup for initial sending and receiving of PDFs. Theses are the imports that we have used
+This code runs on Python 3.12, and only requires to install mysql-connector-python and PyMuPDF. There are a few imports used mainly as an aid for PDF viewing within Tkinter as well as directory lookup for initial sending and receiving of PDFs. Theses are the imports that we have used
 
 ```python
 import fitz
