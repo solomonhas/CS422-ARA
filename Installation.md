@@ -61,7 +61,7 @@ Run the query:
 
 **`CREATE USER 'username'@'%' IDENTIFIED BY 'password';`**  
 
-Replace `username` and `password` with your choices, but ensure to remember them.  
+Replace username and password with your choices, but ensure to remember them.  
 
 Next, grant the user privileges to the database by running:  
 
