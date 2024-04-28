@@ -18,13 +18,8 @@ To run our application, you can either click the green code button and click the
 git clone https://github.com/solomonhas/CS422-ARA.git
 ```
 
-You would then navigate to the donwloaded location and find the CS422-ARA directory, type
-```bash
-pip install -r requirements.txt
-```
-
-### Setting up database
-After installing the requirements, you will have to set up a MySQL database, outlined in [Server_Installation.md](https://github.com/solomonhas/CS422-ARA/blob/main/Server_Installation.md).
+### Installation Guide
+Please complete the steps found [here](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.txt).
 
 ###
 Once you have installed the requirements and set up a server. you can type to run the program.

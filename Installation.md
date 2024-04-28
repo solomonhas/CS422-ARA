@@ -1,4 +1,10 @@
-# Active Reading Assistant Server Installation Setup Guide
+# Active Reading Assistant Installation Setup Guide
+
+### STEP 0
+You would then navigate to the donwloaded location and find the CS422-ARA directory, type
+```bash
+pip install -r requirements.txt
+```
 
 ### STEP 1
 Log on to a Linux-enabled machine, such as the University of Oregon Computer Science department machine ix.  
