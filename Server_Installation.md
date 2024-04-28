@@ -1,16 +1,5 @@
 # Active Reading Assistant Server Installation Setup Guide
 
-## Pip Installs
-```bash
-pip install mysql-connector-python
-```
-```bash
-pip install PyMuPDF
-```
-## Server Setup
-
-
-
 ### STEP 1
 Log on to a Linux-enabled machine, such as the University of Oregon Computer Science department machine ix.  
 From a terminal, the command would be:  
