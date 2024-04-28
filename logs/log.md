@@ -85,3 +85,8 @@
 - **Activities:**
   - Highlighted chapter 5 and added chapter 6 highlighed to the pdfs
   - comments for some functions
+
+## Date: 4/28/2024
+**Logged by:** Solomon Haskell
+- **Activities:**
+  - Formatted the readme, models for sections 4
