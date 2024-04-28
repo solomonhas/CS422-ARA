@@ -20,7 +20,7 @@ git clone https://github.com/solomonhas/CS422-ARA.git
 
 you would then navigate to the donwloaded location and in the CS422-ARA directory type
 ```bash
-pip install -r requirements.txt
+pip install -r Installation.md
 ```
 
 Once you have installed the requirements, you can type 
