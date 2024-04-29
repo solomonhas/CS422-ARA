@@ -88,7 +88,7 @@ CREATE TABLE notes (note_id INT AUTO_INCREMENT PRIMARY KEY, pdf_id INT, note LON
 The database is now set up with the appropriate fields. Enter `exit` into the SQL queries terminal and proceed to the Active Reading Assistant application.
 
 ### STEP 10
-You are now ready to run the program. Please return [README](https://github.com/solomonhas/CS422-ARA/blob/main/README.md) for intructions to run the program.
+You are now ready to run the program. Please return to [README](https://github.com/solomonhas/CS422-ARA/blob/main/README.md) for intructions to run the program.
 
 Launch the Active Reading Assistant and enter the server information:
 
