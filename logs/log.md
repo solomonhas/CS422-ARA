@@ -171,6 +171,15 @@
     - Added documentation to the functions.
     - The server and program should now support full functionality.
 
+## Date: 4/29/2024
+**Logged by:** Areyan Rastawan
+  - **Activities:**
+  - worked on the programmers document
+  - worked on the installation doucment 
+  - connected the readme and te insteallation doucment
+  - cleaned up github
+  - are in final testing stages 
+
 ## Date: 4/27/2024
 **Logged by:** Solomon Haskell
   - **Activities:**

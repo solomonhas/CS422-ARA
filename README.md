@@ -3,7 +3,7 @@
 ## Desciption
 This project is an implimentation of a Active Reading Assistant. This is to help users engage in active learning using the SQ3R system of reading. SQ3R is Survey, Question, Read, Recite, Review. It is built using python with the tkinter import for the UI, and MySQL for that database to store notes and PDF's. When logging in, you are greeted with either logging in as Admin or User. If you choose admin, you have the option to connect your own MySQL database. If you login as user, you do not have that option.
 
-This file is formatted for use on GitHub, but you are still able to read/open as a .txt if needed.
+NOTE: This file is formatted for use on GitHub, but you are still able to read/open as a .txt if needed.
 
 ## Authors
 - Miles Anderson
