@@ -88,6 +88,8 @@ CREATE TABLE notes (note_id INT AUTO_INCREMENT PRIMARY KEY, pdf_id INT, note LON
 The database is now set up with the appropriate fields. Enter `exit` into the SQL queries terminal and proceed to the Active Reading Assistant application.
 
 ### STEP 10
+You are now ready to run the program. Please visit [here](https://github.com/solomonhas/CS422-ARA/blob/main/README.md) for instructions on how to run the program.
+
 Launch the Active Reading Assistant and enter the server information:
 - **Host:** Enter the server domain name (example: `ix-dev.cs.uoregon.edu`)
 - **Port:** Enter the port number captured in step 4
