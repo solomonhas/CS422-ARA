@@ -1,6 +1,10 @@
 import mysql.connector
 import os
 
+"""
+This file manages the database side of the program, facilitating all communications between the Python code and MySQL.
+It serves as the bridge connecting the UI components with the database tables
+"""
 class DatabaseManager:
     def __init__(self, host=None, port=None, user=None, password=None, database=None):
         """

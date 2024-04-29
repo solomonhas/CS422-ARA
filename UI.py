@@ -7,7 +7,11 @@ import tkinter.messagebox as messagebox
 import os
 import random
 
-#
+"""
+This file handles the UI system of the program. It controls what users see on the screen, how they input information
+and how the program responds to their actions.
+
+"""
 class LoginScreen:
     def __init__(self, root):
         """
