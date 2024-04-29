@@ -41,7 +41,7 @@ class LoginScreen:
         self.mode_label = tk.Label(self.login_frame, text="Select mode:")  # Label for mode selection
         self.mode_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")  # Grid placement for label
         self.mode_var = tk.StringVar(self.login_frame, value="user")  # Variable to store mode selection
-        self.mode_user_radio = tk.Radiobutton(self.login_frame, text="User", variable=self.mode_var, value="user",
+        self.mode_user_radio = tk.Radiobutton(self.login_frame, text="Student", variable=self.mode_var, value="student",
                                               command=self.hide_server_login_fields)  # Radio button for user mode
         self.mode_user_radio.grid(row=0, column=1, padx=5, pady=5)  # Grid placement for user radio button
         self.mode_admin_radio = tk.Radiobutton(self.login_frame, text="Admin", variable=self.mode_var, value="admin",
