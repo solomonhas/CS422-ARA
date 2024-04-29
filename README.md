@@ -23,7 +23,7 @@ Move to the CS422-ARA directory and run the command:
 ```bash
 python3 UI.py
 ```
-Reference STEP 10 for server login information, found [here](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.md).
+Reference STEP 10 in the [installation guide](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.md) for server login information
 
 ## Software Dependencies
 This code runs on Python 3.12, and only requires to install mysql-connector-python and PyMuPDF. There are a few imports used mainly as an aid for PDF viewing within Tkinter as well as directory lookup for initial sending and receiving of PDFs. Theses are the imports that we have used
