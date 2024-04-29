@@ -356,7 +356,7 @@ class HomeScreen:
         self.top_frame.pack(side="top", fill="x", padx=10, pady=10)  # Increased padding
 
         # Create a canvas for displaying PDF pages and a vertical scrollbar
-        canvas = tk.Canvas(self.viewer, width=800)
+        canvas = tk.Canvas(self.viewer, width=500)
         canvas.pack(side="left", fill="both", expand=True, padx=10, pady=10)  # padd for pdf
         scrollbar = tk.Scrollbar(self.viewer, orient="vertical", command=canvas.yview)
         scrollbar.pack(side="right", fill="y", padx=10, pady=10)  # Increased padding
