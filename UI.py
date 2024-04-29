@@ -346,7 +346,6 @@ class HomeScreen:
         # Create a Toplevel window for the PDF viewer
         self.viewer = Toplevel(self.root)
         self.viewer.title(pdf_location_var)
-        self.viewer.geometry("800x600")
         self.viewer.pack_propagate(True)
         # Create a frame for buttons at the top
         self.button_frame = tk.Frame(self.viewer)
