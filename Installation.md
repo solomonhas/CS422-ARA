@@ -1,5 +1,7 @@
 # Active Reading Assistant Installation Setup Guide
 
+This file is formatted for use on GitHub, but you are still able to read/open as a .txt if needed.
+
 ### STEP 0
 You would then navigate to the donwloaded location and find the CS422-ARA directory, type
 ```bash

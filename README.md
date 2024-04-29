@@ -3,6 +3,8 @@
 ## Desciption
 This project is an implimentation of a Active Reading Assistant. This is to help users engage in active learning using the SQ3R system of reading. SQ3R is Survey, Question, Read, Recite, Review. It is built using python with the tkinter import for the UI, and MySQL for that database to store notes and PDF's. When logging in, you are greeted with either logging in as Admin or User. If you choose admin, you have the option to connect your own MySQL database. If you login as user, you do not have that option.
 
+This file is formatted for use on GitHub, but you are still able to read/open as a .txt if needed.
+
 ## Authors
 - Miles Anderson
 - Solomon Haskell
@@ -17,7 +19,7 @@ To run our application, you can either click the green code button and click the
 git clone https://github.com/solomonhas/CS422-ARA.git
 ```
 ### Installation Guide
-Please complete the steps found [here](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.md). Once you have installed the requirements and set up a server. You are ready to launch the program.
+Please complete the steps found in [Instillation.md](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.md). Once you have installed the requirements and set up a server. You are ready to launch the program.
 
 ## Launch Program
 Move to the CS422-ARA directory and run the command:
