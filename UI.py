@@ -346,8 +346,8 @@ class HomeScreen:
         # Create a Toplevel window for the PDF viewer
         self.viewer = Toplevel(self.root)
         self.viewer.title(pdf_location_var)
-        self.viewer.minsize(900, 700)  # Adjusted minimum size
-
+        self.viewer.geometry("800x600")
+        self.viewer.pack_propagate(True)
         # Create a frame for buttons at the top
         self.button_frame = tk.Frame(self.viewer)
         self.button_frame.pack(side="top", fill="x", padx=10, pady=10)  # Increased padding
@@ -392,7 +392,7 @@ class HomeScreen:
         # Create frame for notes
         self.notes_frame = tk.Frame(self.viewer)
         self.notes_frame.pack(side="bottom", fill="both", expand=True)  # Increased padding
-        self.notes_frame.pack_propagate(0)  # Prevent automatic resizing
+        self.notes_frame.pack_propagate(True)  # Prevent automatic resizing
 
         # Create widgets for adding, deleting, and managing notes
         note_name_label = Label(self.top_frame, text="Note Name:")
@@ -446,16 +446,16 @@ class HomeScreen:
         add_section_button = Button(self.button_frame, text="Add Section", command=self.add_section)
         add_section_button.pack(side="right", padx=5)  # Align to the right
 
-        self.section_heading_label = Label(self.top_frame, text="Section Heading:")
-        self.section_heading_label.pack(side="left", padx=(0, 5))  # Aligns to the left with some right padding
+        self.section_heading_label = Label(self.button_frame, text="Section Heading:")
+        self.section_heading_label.pack(side="left", padx=5)  # Aligns to the left with some right padding
 
-        self.section_heading_entry = Entry(self.top_frame)
+        self.section_heading_entry = Entry(self.button_frame)
         self.section_heading_entry.pack(side="left")  # Aligns to the left
 
-        self.chapter_title_label = Label(self.top_frame, text="Chapter Title:")
+        self.chapter_title_label = Label(self.button_frame, text="Chapter Title:")
         self.chapter_title_label.pack(side="left", padx=(0, 5))  # Aligns to the left with some right padding
 
-        self.chapter_title_entry = Entry(self.top_frame)
+        self.chapter_title_entry = Entry(self.button_frame)
         self.chapter_title_entry.pack(side="left")  # Aligns to the left
 
         back_button = Button(self.top_frame, text="Back", command=self.viewer.destroy)
