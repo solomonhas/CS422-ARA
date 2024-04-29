@@ -35,11 +35,17 @@
   - Added roles and expected dates to Gantt chart.
   - Added work breakdown milestones.
 
+## Date: 04/14/2024 - Group Meeting
+- **Meeting Time:** 6:00 PM - 6:30 PM
+- **Notes:**
+  - Discussed next steps in terms of developing
+  - Finalized who would be working on which parts of the project.
+
 ## Date: 04/15/2024
 - **Logged by:** Miles Anderson
 - **Activities:**
   - Created UI.py, planning on using TKinter to create the UI for the project.
-  - Initial creation of the file, very little actual code written.
+  - Initial creation of the file, very little actual code written. 
 
 ## Date: 04/18/2024 - Group Meeting
 - **Meeting Time:** 6:00 PM - 6:30 PM
@@ -64,6 +70,11 @@
   - added pdfs directory to store pdfs before they are sent to the server. Going to change this for sure.
   - added requirements.txt to help speed up getting required modules
 
+## Date: 04/21/2024 - Group Meeting
+- **Meeting Time:** 6:00 PM - 6:30 PM
+- **Notes:**
+  - Talked about implimentation between UI and database.
+  - Worked on how the PDF's and notes will be sent/received from the database to the UI
 
 ## Date: 4/21/2024
 **logged by:** Miles Anderson
@@ -79,6 +90,7 @@
   - Made sql_functions.py and pdfs and received_pdfs for pdf-database usage.
   - Added to requirements.
   - Worked on the logic for pdf tables
+  - updated the readme a bit more, still a WIP.
 
 
 ## Date: 4/21/2024
@@ -118,6 +130,12 @@
     - Gave the notes a hierarchy system.
     - Messed around with the GUI, tried to format it better (buggy).
 
+## Date: 04/21/2024 - Group Meeting
+- **Meeting Time:** 6:00 PM - 6:30 PM
+- **Notes:**
+  - Updated SDS with sections that we have changed.
+  - Talked about combining as much code as we can to make it more user friendly.
+  - UI and notetaking should be on one file.
 
 ## Date: 4/25/2024
 **Logged by:** Areyan Rastawan
@@ -131,7 +149,9 @@
 **Logged by:** Solomon Haskell
 - **Activities:**
   - Highlighted chapter 5 and added chapter 6 highlighed to the pdfs
-  - comments for some functions
+  - Comments for some functions
+  - Updated readme
+  - Gantt chart, as well as cleaning up GitHub as best as possible.
 
 
 ## Date: 4/26/2024
@@ -150,3 +170,19 @@
     - The program's progress is saved through the server.
     - Added documentation to the functions.
     - The server and program should now support full functionality.
+
+## Date: 4/27/2024
+**Logged by:** Solomon Haskell
+  - **Activities:**
+    - Fixed issues with tabling and port, and now the user can sign in using a different server.
+    - The program's progress is saved through the server.
+    - Added documentation to the functions.
+    - The server and program should now support full functionality.
+    - Finished readme to support overview, how to install, subdirectories and such.
+
+## Date: 04/28/2024 - Group Meeting
+- **Meeting Time:** 6:00 PM - 6:30 PM
+- **Notes:**
+  - Worked on finishing touches of the parts of the final zip
+  - Cleaned up SDS, user documentation, readme, as a group to make sure we all agree with what we will be turning in.
+  - Planned out group presentation.

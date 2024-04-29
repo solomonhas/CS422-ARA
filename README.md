@@ -18,7 +18,8 @@ git clone https://github.com/solomonhas/CS422-ARA.git
 ```
 ### Installation Guide
 Please complete the steps found [here](https://github.com/solomonhas/CS422-ARA/blob/main/Installation.md). Once you have installed the requirements and set up a server. You are ready to launch the program.
-## Luanch Program
+
+## Launch Program
 Move to the CS422-ARA directory and run the command:
 ```bash
 python3 UI.py
